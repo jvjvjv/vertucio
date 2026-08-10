@@ -2,6 +2,8 @@
 
 use App\Models\SponsoredResult;
 use App\Search\Enums\SponsorshipStatus;
+use Carbon\CarbonImmutable;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Artisan;
 
 it('creates a sponsored result from options', function () {
@@ -117,12 +119,19 @@ it('says so when there are no promos at all', function () {
 });
 
 it('closes an active promo immediately', function () {
+    $at = CarbonImmutable::parse('2026-08-10 12:00:00');
+
+    Carbon::setTestNow($at);
+
     $promo = SponsoredResult::factory()->create();
 
     $this->artisan('sponsored:end', ['id' => $promo->id])->assertSuccessful();
 
-    expect($promo->fresh()->status())->toBe(SponsorshipStatus::Expired)
+    expect($promo->fresh()->ends_at?->toDateTimeString())->toBe('2026-08-10 12:00:00')
+        ->and($promo->fresh()->status())->toBe(SponsorshipStatus::Expired)
         ->and(SponsoredResult::active()->count())->toBe(0);
+
+    Carbon::setTestNow();
 });
 
 it('accepts an explicit end moment', function () {
