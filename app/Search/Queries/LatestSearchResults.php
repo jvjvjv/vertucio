@@ -41,6 +41,8 @@ final class LatestSearchResults
     /**
      * Every section on the search page paginates independently, so callers
      * pass their own $pageName — see Livewire's named-paginator support.
+     *
+     * @return LengthAwarePaginator<int, SearchResult>
      */
     public function paginate(SearchVertical $vertical, int $perPage, string $pageName = 'page'): LengthAwarePaginator
     {
