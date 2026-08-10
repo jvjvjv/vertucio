@@ -1,6 +1,7 @@
 <?php
 
 use App\Search\Providers\BraveSearchProvider;
+use App\Search\Providers\GoogleNewsRssProvider;
 
 return [
 
@@ -24,6 +25,7 @@ return [
 
     'providers' => [
         BraveSearchProvider::class,
+        GoogleNewsRssProvider::class,
     ],
 
 ];
