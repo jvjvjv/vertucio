@@ -2,6 +2,7 @@
 
 use App\Models\SponsoredResult;
 use App\Search\Enums\SponsorshipStatus;
+use Illuminate\Support\Facades\Artisan;
 
 it('creates a sponsored result from options', function () {
     $this->artisan('sponsored:add', [
@@ -96,14 +97,17 @@ it('lists every promo with its derived status', function () {
     SponsoredResult::factory()->expired()->create(['title' => 'Old promo']);
     SponsoredResult::factory()->scheduled()->create(['title' => 'Future promo']);
 
-    $this->artisan('sponsored:list')->expectsOutputToContain('Live promo');
-    $this->artisan('sponsored:list')->expectsOutputToContain('Old promo');
-    $this->artisan('sponsored:list')->expectsOutputToContain('Future promo');
-    $this->artisan('sponsored:list')->expectsOutputToContain('Active');
-    $this->artisan('sponsored:list')->expectsOutputToContain('Expired');
-    $this->artisan('sponsored:list')->expectsOutputToContain('Scheduled');
-    $this->artisan('sponsored:list')->expectsOutputToContain('vertucio.com');
-    $this->artisan('sponsored:list')->assertSuccessful();
+    expect(Artisan::call('sponsored:list'))->toBe(0);
+
+    $output = Artisan::output();
+
+    expect($output)->toContain('Live promo')
+        ->toContain('Old promo')
+        ->toContain('Future promo')
+        ->toContain('Active')
+        ->toContain('Expired')
+        ->toContain('Scheduled')
+        ->toContain('vertucio.com');
 });
 
 it('says so when there are no promos at all', function () {
