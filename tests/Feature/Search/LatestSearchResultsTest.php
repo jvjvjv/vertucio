@@ -85,3 +85,30 @@ it('reports when each vertical was last collected', function () {
     expect(app(LatestSearchResults::class)->lastCollectedAt(SearchVertical::Web)->toDateTimeString())
         ->toBe('2026-08-09 09:00:00');
 });
+
+it('paginates results', function () {
+    snapshotWith('brave', SearchVertical::Web, Carbon::parse('2026-08-09 09:00'), 10);
+
+    $page1 = app(LatestSearchResults::class)->paginate(SearchVertical::Web, 4);
+
+    expect($page1->total())->toBe(10)
+        ->and($page1->items())->toHaveCount(4)
+        ->and($page1->currentPage())->toBe(1);
+});
+
+it('returns an empty paginator when nothing has been collected', function () {
+    $page = app(LatestSearchResults::class)->paginate(SearchVertical::Web, 4);
+
+    expect($page->total())->toBe(0)
+        ->and($page->items())->toBeEmpty();
+});
+
+it('tracks a named paginator independently of the default page', function () {
+    snapshotWith('brave', SearchVertical::News, Carbon::parse('2026-08-09 09:00'), 10);
+
+    request()->merge(['news-page' => 2]);
+
+    $page = app(LatestSearchResults::class)->paginate(SearchVertical::News, 4, 'news-page');
+
+    expect($page->currentPage())->toBe(2);
+});

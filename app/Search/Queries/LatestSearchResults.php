@@ -5,6 +5,7 @@ namespace App\Search\Queries;
 use App\Models\SearchResult;
 use App\Models\SearchSnapshot;
 use App\Search\Enums\SearchVertical;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -35,6 +36,26 @@ final class LatestSearchResults
             ->orderBy('search_snapshot_id')
             ->limit($limit)
             ->get();
+    }
+
+    /**
+     * Every section on the search page paginates independently, so callers
+     * pass their own $pageName — see Livewire's named-paginator support.
+     */
+    public function paginate(SearchVertical $vertical, int $perPage, string $pageName = 'page'): LengthAwarePaginator
+    {
+        $snapshotIds = $this->latestSnapshotIds($vertical);
+
+        if ($snapshotIds === []) {
+            return new LengthAwarePaginator([], 0, $perPage, null, ['pageName' => $pageName]);
+        }
+
+        return SearchResult::query()
+            ->whereIn('search_snapshot_id', $snapshotIds)
+            ->with('snapshot')
+            ->orderBy('position')
+            ->orderBy('search_snapshot_id')
+            ->paginate($perPage, ['*'], $pageName);
     }
 
     /**
