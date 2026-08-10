@@ -173,8 +173,14 @@ Sponsored     ← paid placement, directly above organic
 Results
 ```
 
-**`x-serp.sponsored-row`** — the `result-row` markup plus a "Sponsored" badge. A separate component rather
-than a `badge` prop on `result-row`, so the organic row is untouched by this work.
+A **"Sponsored" section heading** labels the block, matching the uppercase headings the other three
+sections already use. The rows carry no separate per-row badge — a heading plus a badge on every row says
+the same thing twice, and a labelled block is how a real SERP marks paid placement.
+
+**`x-serp.sponsored-row`** — the `result-row` markup with two changes: the title is authored, so there is no
+`displayHost()` fallback for the label, and the link carries `rel="sponsored"` alongside the existing
+`noopener noreferrer nofollow`. That `rel` value is the correct declaration for a paid link and is the
+reason this is a separate component rather than a prop on `result-row`, which stays untouched.
 
 The block **renders nothing at all** when no promo is live — no heading, no container. It does not use
 `x-serp.section`, whose empty states ("Not collected yet" / "No results found") are both meaningless for
