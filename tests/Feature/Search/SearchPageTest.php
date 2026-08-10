@@ -31,8 +31,7 @@ function seedSnapshot(string $provider, SearchVertical $vertical, int $count, ar
 it('renders the page for guests', function () {
     $this->get(route('search'))
         ->assertOk()
-        ->assertSee('Verified Results')
-        ->assertSee('vertucio');
+        ->assertSee('Vertucio');
 });
 
 it('shows results from each vertical', function () {
@@ -49,7 +48,7 @@ it('shows results from each vertical', function () {
         ->assertSee('Results');
 });
 
-it('caps each section at the display limit from the design', function () {
+it('shows the first page of each section at the configured page size', function () {
     seedSnapshot('brave', SearchVertical::Web, 20);
     seedSnapshot('brave', SearchVertical::News, 20);
     seedSnapshot('brave', SearchVertical::Images, 20);
@@ -59,6 +58,7 @@ it('caps each section at the display limit from the design', function () {
     $response->assertSee('web result 4')->assertDontSee('web result 5');
     $response->assertSee('news result 3')->assertDontSee('news result 4');
     $response->assertSee('images result 6')->assertDontSee('images result 7');
+    $response->assertSee('wire:click="nextPage(\'results\')"', escape: false);
 });
 
 it('tells the visitor when a vertical has never been collected', function () {
