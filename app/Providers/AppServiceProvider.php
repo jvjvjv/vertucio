@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Search\Contracts\SearchProvider;
+use App\Search\SearchManager;
 use Carbon\CarbonImmutable;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -15,7 +18,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(SearchManager::class, static function (Application $app): SearchManager {
+            /** @var array<int, class-string<SearchProvider>> $providers */
+            $providers = $app['config']->get('search.providers', []);
+
+            return new SearchManager(
+                array_map(static fn (string $provider): SearchProvider => $app->make($provider), $providers)
+            );
+        });
     }
 
     /**
