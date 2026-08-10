@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Concerns\RendersResultLinks;
 use Carbon\CarbonImmutable;
 use Database\Factories\SearchResultFactory;
 use Illuminate\Database\Eloquent\Attributes\Guarded;
@@ -31,7 +32,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SearchResult extends Model
 {
     /** @use HasFactory<SearchResultFactory> */
-    use HasFactory;
+    use HasFactory, RendersResultLinks;
 
     /**
      * @return BelongsTo<SearchSnapshot, $this>
@@ -42,21 +43,8 @@ class SearchResult extends Model
     }
 
     /**
-     * The link target, or null when the stored URL is not safe to navigate to.
-     *
-     * Result URLs arrive from third-party search APIs and are never authored
-     * here. Blade escaping protects the attribute boundary but not the scheme,
-     * so a javascript:, data:, or vbscript: URL would still execute on click.
-     * Callers render unlinked text when this returns null.
-     */
-    public function safeUrl(): ?string
-    {
-        return $this->safeHttpUrl($this->url);
-    }
-
-    /**
-     * The thumbnail to render, or null when the stored value is not a plain
-     * http(s) image reference.
+     * Falls back to the Brave thumbnail carried in meta when the row has no
+     * image URL of its own.
      */
     public function safeImageUrl(): ?string
     {
@@ -108,31 +96,5 @@ class SearchResult extends Model
             'published_at' => 'datetime',
             'meta' => 'array',
         ];
-    }
-
-    private function stripWww(string $host): string
-    {
-        return (string) preg_replace('/^www\./i', '', $host);
-    }
-
-    /**
-     * Allow-list http and https. Anything else — including scheme-relative and
-     * schemeless values, which resolve unpredictably — is rejected.
-     */
-    private function safeHttpUrl(string $url): ?string
-    {
-        $trimmed = trim($url);
-
-        if ($trimmed === '') {
-            return null;
-        }
-
-        $scheme = parse_url($trimmed, PHP_URL_SCHEME);
-
-        if (! is_string($scheme)) {
-            return null;
-        }
-
-        return in_array(strtolower($scheme), ['http', 'https'], true) ? $trimmed : null;
     }
 }
