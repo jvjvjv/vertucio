@@ -3,18 +3,26 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Implement the Figma "Search Results" and "Sponsor Us" canvases: a Livewire-driven search
-page with a working (filter-based) search bar and paginated results, a shared footer with a real
-Privacy Policy page, and a Sponsor Us lead-gen form with a static PayPal link.
+page with a working search bar that performs a real (cached, not persisted) search, pagination on
+every section, a shared footer with a real Privacy Policy page, and a Sponsor Us lead-gen form
+with a static PayPal link.
 
 **Architecture:** The search page (`pages::search`, mounted at `/`) becomes a stateful Livewire
-component with `#[Url]`-bound search term, `#[Computed]` properties per section, and
-`WithPagination` for the organic Results section. A new `pages::sponsor` Livewire component and a
-static `pages.privacy` view round out the routes. Two new Blade components
-(`x-site.search-bar`, `x-site.footer`) are shared across all three pages. `LatestSearchResults`
-and `SponsoredResult` gain an optional term filter used by the search bar.
+component with an `#[Url]`-bound search term and four independently-paginated sections (News,
+Images, Sponsored, Results), each using Livewire's named-paginator support. With no term typed,
+every section reads the daily-collected snapshot data as it always has. Once a term is submitted,
+News/Images/Results switch to a **live** call through the existing `SearchManager`/provider layer,
+cached (`Cache::remember`) so the same typed query doesn't re-hit paid APIs, and never written to
+the `search_snapshots`/`search_results` tables — those stay exclusively the daily-fetch log for
+the one monitored query. Sponsored results are always DB-backed (they are authored, not fetched)
+and get the same term filter and pagination treatment. A new `pages::sponsor` Livewire component
+and a static `pages.privacy` view round out the routes. Two new Blade components
+(`x-site.search-bar`, `x-site.footer`) are shared across all three pages; the search bar takes an
+optional `logo` flag so pages can opt into showing the brand mark.
 
-**Tech Stack:** Laravel 13 (PHP 8.4), Livewire 4 single-file page components, Pest, Tailwind CSS
-v4 with the project's existing `--serp-*` CSS custom properties.
+**Tech Stack:** Laravel 13 (PHP 8.4), Livewire 4 single-file page components (including named
+multiple-paginator support), Pest, Tailwind CSS v4 with the project's existing `--serp-*` CSS
+custom properties.
 
 ## Global Constraints
 
@@ -24,17 +32,28 @@ v4 with the project's existing `--serp-*` CSS custom properties.
   `#[Fillable([...])]` with an explicit allow-list, **not** `#[Guarded([])]` (that pattern is
   reserved for models written only by internal code, per the existing doc-comments on
   `SearchResult`/`SponsoredResult`/`SearchSnapshot`).
-- Every model change ships with a Pest test; run `php artisan test --compact --filter=<Name>`
+- A typed search term **never** writes to `search_snapshots` or `search_results` — those tables
+  are exclusively the daily scheduled-fetch log for `config('search.query')`. Live, on-demand
+  results are cached (`Cache::remember`) and represented as unsaved `SearchResult::make(...)`
+  instances so the existing Blade result components work unchanged, without ever calling `save()`.
+- Every model/action change ships with a Pest test; run `php artisan test --compact --filter=<Name>`
   after each task, not the full suite, until the final task.
 - Run `vendor/bin/pint --dirty --format agent` after any PHP file changes, before committing.
 - Icons are pre-downloaded, real Figma vector assets at `public/icons/*.svg` — never hand-author
-  an `<svg>` inline.
+  an `<svg>` inline. The one exception is the small brand "dot" next to the "Vertucio" wordmark,
+  which is a plain filled circle (trivial CSS geometry, not vector art) — a `<span>` with
+  `rounded-full` is fine, no asset needed.
 - Colors: use the project's existing `--serp-*` CSS custom properties (`--serp-text`,
   `--serp-meta`, `--serp-line`, `--serp-link`, `--serp-url`, `--serp-surface`, `--serp-raised`)
   for anything that should flip between light/dark. Elements that are a fixed color in the Figma
-  source regardless of theme (the black search button, the black "current page" pagination pill's
-  icon-bearing sibling) use literal Tailwind classes (e.g. `bg-zinc-900 text-white`) instead, so a
-  white icon never lands on a light background after a dark-mode flip.
+  source regardless of theme (the black search button, the black "current page" pagination pill)
+  use literal Tailwind classes (e.g. `bg-zinc-900 text-white`) instead, so a white icon never
+  lands on a light background after a dark-mode flip.
+- Livewire's `WithPagination` trait exposes `$this->getPage($pageName)` to read the current page
+  Livewire is tracking for a named paginator, and navigation methods take the page name as a
+  trailing argument: `previousPage($pageName)`, `nextPage($pageName)`, `setPage($page, $pageName)`,
+  `resetPage($pageName)`. Use `setPage`, not the older `gotoPage` alias, to match the documented
+  Livewire 4 API.
 
 ---
 
@@ -472,61 +491,28 @@ git commit -m "Add SponsorshipInquiryReceived notification mail"
 
 ---
 
-### Task 4: `LatestSearchResults` term filter and pagination
+### Task 4: Named-paginator support on `LatestSearchResults`
 
 **Files:**
 - Modify: `app/Search/Queries/LatestSearchResults.php`
 - Modify: `tests/Feature/Search/LatestSearchResultsTest.php`
 
 **Interfaces:**
-- Produces: `LatestSearchResults::for(SearchVertical $vertical, int $limit, ?string $term = null): Collection<int, SearchResult>`
-  (existing signature, now with an optional trailing `$term`), and
-  `LatestSearchResults::paginate(SearchVertical $vertical, int $perPage, ?string $term = null): \Illuminate\Pagination\LengthAwarePaginator`.
+- Produces: `LatestSearchResults::paginate(SearchVertical $vertical, int $perPage, string $pageName = 'page'): \Illuminate\Pagination\LengthAwarePaginator`
+  (existing `for()` is unchanged — still `for(SearchVertical $vertical, int $limit): Collection`).
+
+This is the **no-term** path: every section reads the daily-collected snapshot for
+`config('search.query')`, same as before, just paginated instead of hard-`limit()`-ed, and each
+section tracks its own page number via `$pageName` (Task 12 wires up `'news'`, `'images'`,
+`'results'`).
 
 - [ ] **Step 1: Write the failing tests**
 
-Append to `tests/Feature/Search/LatestSearchResultsTest.php` (before the final closing of the
-file — it already ends with an `it(...)` block, so just add these after it):
+Append to `tests/Feature/Search/LatestSearchResultsTest.php` (after the existing final `it(...)`
+block):
 
 ```php
-it('filters results by a search term matching the title', function () {
-    snapshotWith('brave', SearchVertical::Web, Carbon::parse('2026-08-09 09:00'), 0);
-
-    $snapshot = SearchSnapshot::factory()->create([
-        'provider' => 'brave',
-        'vertical' => SearchVertical::Web,
-        'fetched_at' => Carbon::parse('2026-08-09 09:00'),
-        'result_count' => 2,
-    ]);
-
-    SearchResult::factory()->create([
-        'search_snapshot_id' => $snapshot->id,
-        'position' => 1,
-        'title' => 'Vertucio pricing guide',
-        'description' => 'Plans and pricing',
-    ]);
-
-    SearchResult::factory()->create([
-        'search_snapshot_id' => $snapshot->id,
-        'position' => 2,
-        'title' => 'Unrelated headline',
-        'description' => 'Nothing to do with pricing',
-    ]);
-
-    $results = app(LatestSearchResults::class)->for(SearchVertical::Web, 10, 'pricing');
-
-    expect($results)->toHaveCount(2);
-});
-
-it('filters results by a search term with no matches to an empty collection', function () {
-    snapshotWith('brave', SearchVertical::Web, Carbon::parse('2026-08-09 09:00'), 3);
-
-    $results = app(LatestSearchResults::class)->for(SearchVertical::Web, 10, 'no such term anywhere');
-
-    expect($results)->toBeEmpty();
-});
-
-it('paginates the organic results', function () {
+it('paginates results', function () {
     snapshotWith('brave', SearchVertical::Web, Carbon::parse('2026-08-09 09:00'), 10);
 
     $page1 = app(LatestSearchResults::class)->paginate(SearchVertical::Web, 4);
@@ -542,126 +528,53 @@ it('returns an empty paginator when nothing has been collected', function () {
     expect($page->total())->toBe(0)
         ->and($page->items())->toBeEmpty();
 });
+
+it('tracks a named paginator independently of the default page', function () {
+    snapshotWith('brave', SearchVertical::News, Carbon::parse('2026-08-09 09:00'), 10);
+
+    request()->merge(['news-page' => 2]);
+
+    $page = app(LatestSearchResults::class)->paginate(SearchVertical::News, 4, 'news-page');
+
+    expect($page->currentPage())->toBe(2);
+});
 ```
 
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `php artisan test --compact --filter=LatestSearchResultsTest`
-Expected: FAIL — `paginate()` does not exist, and `for()` does not accept a third argument yet
-(PHP allows extra args to be silently ignored only if using func_get_args, so the term-filter
-tests fail on the assertion, not a fatal error).
+Expected: FAIL — `paginate()` does not exist yet.
 
-- [ ] **Step 3: Implement the term filter and pagination**
+- [ ] **Step 3: Add pagination**
 
-Replace the full contents of `app/Search/Queries/LatestSearchResults.php`:
+In `app/Search/Queries/LatestSearchResults.php`, add these imports:
 
 ```php
-<?php
-
-namespace App\Search\Queries;
-
-use App\Models\SearchResult;
-use App\Models\SearchSnapshot;
-use App\Search\Enums\SearchVertical;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Collection;
+```
 
-/**
- * Read model over the immutable snapshot history.
- *
- * Snapshots are append-only, so "latest" is the highest id per provider. A
- * vertical may be served by more than one provider (news comes from both
- * Brave and Google News RSS), so results are merged across them.
- */
-final class LatestSearchResults
-{
+Add this method after `for()`:
+
+```php
     /**
-     * @return Collection<int, SearchResult>
+     * Every section on the search page paginates independently, so callers
+     * pass their own $pageName — see Livewire's named-paginator support.
      */
-    public function for(SearchVertical $vertical, int $limit, ?string $term = null): Collection
+    public function paginate(SearchVertical $vertical, int $perPage, string $pageName = 'page'): LengthAwarePaginator
     {
         $snapshotIds = $this->latestSnapshotIds($vertical);
 
         if ($snapshotIds === []) {
-            return collect();
+            return new LengthAwarePaginator([], 0, $perPage, null, ['pageName' => $pageName]);
         }
 
-        return $this->baseQuery($snapshotIds, $term)
-            ->limit($limit)
-            ->get();
-    }
-
-    /**
-     * The organic Results section is the only one the Figma design paginates.
-     */
-    public function paginate(SearchVertical $vertical, int $perPage, ?string $term = null): LengthAwarePaginator
-    {
-        $snapshotIds = $this->latestSnapshotIds($vertical);
-
-        if ($snapshotIds === []) {
-            return new LengthAwarePaginator([], 0, $perPage);
-        }
-
-        return $this->baseQuery($snapshotIds, $term)->paginate($perPage);
-    }
-
-    /**
-     * Whether a fetch has ever landed for this vertical. Distinct from having
-     * zero results: "not collected" and "collected, found nothing" are
-     * different facts and the UI states for them differ.
-     */
-    public function wasCollected(SearchVertical $vertical): bool
-    {
-        return $this->latestSnapshotIds($vertical) !== [];
-    }
-
-    public function lastCollectedAt(SearchVertical $vertical): ?Carbon
-    {
-        $fetchedAt = SearchSnapshot::query()
-            ->where('vertical', $vertical)
-            ->max('fetched_at');
-
-        return $fetchedAt === null ? null : Carbon::parse($fetchedAt);
-    }
-
-    /**
-     * @param  array<int, int>  $snapshotIds
-     * @return Builder<SearchResult>
-     */
-    private function baseQuery(array $snapshotIds, ?string $term): Builder
-    {
         return SearchResult::query()
             ->whereIn('search_snapshot_id', $snapshotIds)
             ->with('snapshot')
-            ->when(filled($term), fn (Builder $query): Builder => $query->where(
-                fn (Builder $query) => $query
-                    ->where('title', 'like', "%{$term}%")
-                    ->orWhere('description', 'like', "%{$term}%")
-            ))
             ->orderBy('position')
-            ->orderBy('search_snapshot_id');
+            ->orderBy('search_snapshot_id')
+            ->paginate($perPage, ['*'], $pageName);
     }
-
-    /**
-     * The newest snapshot id for each provider serving this vertical.
-     *
-     * @return array<int, int>
-     */
-    private function latestSnapshotIds(SearchVertical $vertical): array
-    {
-        /** @var array<int, int> $ids */
-        $ids = SearchSnapshot::query()
-            ->where('vertical', $vertical)
-            ->groupBy('provider')
-            ->pluck(SearchSnapshot::raw('MAX(id)'))
-            ->map(static fn (mixed $id): int => (int) $id)
-            ->all();
-
-        return $ids;
-    }
-}
 ```
 
 - [ ] **Step 4: Run tests to verify they pass**
@@ -674,12 +587,254 @@ Expected: PASS — all existing and new tests green.
 ```bash
 vendor/bin/pint --dirty --format agent
 git add app/Search/Queries/LatestSearchResults.php tests/Feature/Search/LatestSearchResultsTest.php
-git commit -m "Add search-term filtering and pagination to LatestSearchResults"
+git commit -m "Add named-paginator support to LatestSearchResults"
 ```
 
 ---
 
-### Task 5: `SponsoredResult` term filter
+### Task 5: `LiveSearch` action — cached, on-demand, never persisted
+
+**Files:**
+- Create: `app/Search/Actions/LiveSearch.php`
+- Test: `tests/Unit/Search/LiveSearchTest.php`
+
+**Interfaces:**
+- Consumes: `App\Search\SearchManager` (existing, already a singleton — see
+  `app/Providers/AppServiceProvider.php`).
+- Produces: `LiveSearch::for(SearchVertical $vertical, string $query): Collection<int, SearchResultItem>`
+  — merges every provider supporting the vertical, catches per-provider
+  `SearchProviderException` so one failing provider doesn't blank the whole result, and caches the
+  merged result for 15 minutes so the same typed query does not re-hit paid APIs. **Never writes
+  to `search_snapshots`/`search_results`.**
+
+This is the **term-typed** path — the direct answer to "the search bar performs a new search that
+is cached but not saved."
+
+- [ ] **Step 1: Write the failing tests**
+
+Create `tests/Unit/Search/LiveSearchTest.php`:
+
+```php
+<?php
+
+use App\Search\Actions\LiveSearch;
+use App\Search\Contracts\SearchProvider;
+use App\Search\Data\SearchQuery;
+use App\Search\Data\SearchResultItem;
+use App\Search\Data\SearchResultSet;
+use App\Search\Enums\SearchVertical;
+use App\Search\Exceptions\SearchProviderException;
+use App\Search\SearchManager;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
+
+function liveProvider(string $name, array $verticals, array $items = [], bool $throws = false): SearchProvider
+{
+    return new class($name, $verticals, $items, $throws) implements SearchProvider
+    {
+        /**
+         * @param  array<int, SearchVertical>  $verticals
+         * @param  array<int, SearchResultItem>  $items
+         */
+        public function __construct(
+            private string $providerName,
+            private array $verticals,
+            private array $items,
+            private bool $throws,
+        ) {}
+
+        public function name(): string
+        {
+            return $this->providerName;
+        }
+
+        public function supports(SearchVertical $vertical): bool
+        {
+            return in_array($vertical, $this->verticals, true);
+        }
+
+        public function search(SearchQuery $query): SearchResultSet
+        {
+            if ($this->throws) {
+                throw SearchProviderException::requestFailed($this->providerName, $query->vertical, 500);
+            }
+
+            return new SearchResultSet(
+                provider: $this->providerName,
+                vertical: $query->vertical,
+                query: $query->query,
+                fetchedAt: Carbon::now(),
+                items: $this->items,
+            );
+        }
+    };
+}
+
+beforeEach(function () {
+    Cache::flush();
+});
+
+it('merges items from every provider supporting the vertical', function () {
+    $itemA = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'From A');
+    $itemB = new SearchResultItem(position: 1, url: 'https://b.example.com', title: 'From B');
+
+    $manager = new SearchManager([
+        liveProvider('a', [SearchVertical::Web], [$itemA]),
+        liveProvider('b', [SearchVertical::Web], [$itemB]),
+    ]);
+
+    $results = (new LiveSearch($manager))->for(SearchVertical::Web, 'vertucio');
+
+    expect($results->pluck('title')->all())->toBe(['From A', 'From B']);
+});
+
+it('skips a provider that throws instead of failing the whole search', function () {
+    $item = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'Still here');
+
+    $manager = new SearchManager([
+        liveProvider('working', [SearchVertical::Web], [$item]),
+        liveProvider('broken', [SearchVertical::Web], [], throws: true),
+    ]);
+
+    $results = (new LiveSearch($manager))->for(SearchVertical::Web, 'vertucio');
+
+    expect($results)->toHaveCount(1)
+        ->and($results->first()->title)->toBe('Still here');
+});
+
+it('caches the result so a repeated query does not call providers again', function () {
+    $item = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'Cached once');
+    $calls = 0;
+
+    $provider = new class($item, $calls) implements SearchProvider
+    {
+        public function __construct(private SearchResultItem $item, private int &$calls) {}
+
+        public function name(): string
+        {
+            return 'counting';
+        }
+
+        public function supports(SearchVertical $vertical): bool
+        {
+            return true;
+        }
+
+        public function search(SearchQuery $query): SearchResultSet
+        {
+            $this->calls++;
+
+            return new SearchResultSet(
+                provider: 'counting',
+                vertical: $query->vertical,
+                query: $query->query,
+                fetchedAt: Carbon::now(),
+                items: [$this->item],
+            );
+        }
+    };
+
+    $manager = new SearchManager([$provider]);
+    $liveSearch = new LiveSearch($manager);
+
+    $liveSearch->for(SearchVertical::Web, 'vertucio');
+    $liveSearch->for(SearchVertical::Web, 'vertucio');
+
+    expect($calls)->toBe(1);
+});
+
+it('does not write anything to the search_results or search_snapshots tables', function () {
+    $item = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'Never persisted');
+    $manager = new SearchManager([liveProvider('a', [SearchVertical::Web], [$item])]);
+
+    (new LiveSearch($manager))->for(SearchVertical::Web, 'vertucio');
+
+    expect(\App\Models\SearchSnapshot::query()->count())->toBe(0)
+        ->and(\App\Models\SearchResult::query()->count())->toBe(0);
+});
+```
+
+- [ ] **Step 2: Run tests to verify they fail**
+
+Run: `php artisan test --compact --filter=LiveSearchTest`
+Expected: FAIL — class `App\Search\Actions\LiveSearch` not found.
+
+- [ ] **Step 3: Write the action**
+
+Create `app/Search/Actions/LiveSearch.php`:
+
+```php
+<?php
+
+namespace App\Search\Actions;
+
+use App\Search\Contracts\SearchProvider;
+use App\Search\Data\SearchResultItem;
+use App\Search\Enums\SearchVertical;
+use App\Search\Exceptions\SearchProviderException;
+use App\Search\SearchManager;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+
+/**
+ * An on-demand search for whatever the visitor typed into the search bar.
+ *
+ * Unlike the scheduled fetch, this never writes to search_snapshots or
+ * search_results — those tables are exclusively the daily-collected log for
+ * the one monitored query (config('search.query')). A typed term is a real,
+ * live call through the same provider layer, cached so the same query
+ * doesn't repeatedly hit paid APIs, but the result is never persisted.
+ */
+final class LiveSearch
+{
+    private const CACHE_MINUTES = 15;
+
+    public function __construct(private readonly SearchManager $manager)
+    {
+        //
+    }
+
+    /**
+     * @return Collection<int, SearchResultItem>
+     */
+    public function for(SearchVertical $vertical, string $query): Collection
+    {
+        $key = sprintf('search:live:%s:%s', $vertical->value, mb_strtolower(trim($query)));
+
+        /** @var Collection<int, SearchResultItem> $items */
+        $items = Cache::remember($key, now()->addMinutes(self::CACHE_MINUTES), function () use ($vertical, $query): Collection {
+            return $this->manager->providersFor($vertical)
+                ->flatMap(function (SearchProvider $provider) use ($vertical, $query): array {
+                    try {
+                        return $this->manager->fetch($provider, $vertical, $query)->items;
+                    } catch (SearchProviderException) {
+                        return [];
+                    }
+                })
+                ->values();
+        });
+
+        return $items;
+    }
+}
+```
+
+- [ ] **Step 4: Run tests to verify they pass**
+
+Run: `php artisan test --compact --filter=LiveSearchTest`
+Expected: PASS
+
+- [ ] **Step 5: Format and commit**
+
+```bash
+vendor/bin/pint --dirty --format agent
+git add app/Search/Actions/LiveSearch.php tests/Unit/Search/LiveSearchTest.php
+git commit -m "Add LiveSearch action for cached, on-demand, non-persisted searches"
+```
+
+---
+
+### Task 6: `SponsoredResult` term filter
 
 **Files:**
 - Modify: `app/Models/SponsoredResult.php`
@@ -688,6 +843,9 @@ git commit -m "Add search-term filtering and pagination to LatestSearchResults"
 **Interfaces:**
 - Produces: `SponsoredResult::matching(?string $term)` local scope, usable as
   `SponsoredResult::active()->when(filled($term), fn ($q) => $q->matching($term))`.
+
+Sponsored promos are authored, not fetched, so there is no "live" equivalent for them — a typed
+term filters the existing table directly, same as before this feedback round.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -728,8 +886,8 @@ Expected: FAIL — `matching()` is not a recognized method/scope on the query bu
 
 - [ ] **Step 3: Add the scope**
 
-In `app/Models/SponsoredResult.php`, add `use Illuminate\Database\Eloquent\Builder;` import
-(already imported), and add this method after `active()`:
+In `app/Models/SponsoredResult.php` (it already imports `Illuminate\Database\Eloquent\Builder`
+and `Illuminate\Database\Eloquent\Attributes\Scope`), add this method after `active()`:
 
 ```php
     /**
@@ -771,7 +929,7 @@ git commit -m "Add a search-term filter scope to SponsoredResult"
 
 ---
 
-### Task 6: Shared `x-site.search-bar` component
+### Task 7: Shared `x-site.search-bar` component, with an optional logo
 
 **Files:**
 - Create: `resources/views/components/site/search-bar.blade.php`
@@ -779,10 +937,13 @@ git commit -m "Add a search-term filter scope to SponsoredResult"
 - Test: `tests/Feature/Site/SearchBarComponentTest.php`
 
 **Interfaces:**
-- Produces: `<x-site.search-bar :label="string" :live="bool" />` — renders a form. When
-  `live` is `true`, the input carries `wire:model="term"` and the form carries
-  `wire:submit="search"` (both refer to the Livewire component that renders it — see Task 11).
-  When `live` is `false`, the form plain-GETs to `route('search')` with the input named `q`.
+- Produces: `<x-site.search-bar :label="string" :live="bool" :logo="bool" />` — renders an
+  optional brand mark (name + dot) followed by a form. When `live` is `true`, the input carries
+  `wire:model="term"` and the form carries `wire:submit="search"` (both refer to the Livewire
+  component that renders it — see Task 12). When `live` is `false`, the form plain-GETs to
+  `route('search')` with the input named `q`. `logo` defaults to `false`; pages that want the
+  brand mark (Task 12's search page, Task 9's privacy page, Task 13's sponsor page) pass
+  `:logo="true"` explicitly.
 
 - [ ] **Step 1: Confirm the icon assets exist**
 
@@ -798,6 +959,8 @@ Create `tests/Feature/Site/SearchBarComponentTest.php`:
 
 ```php
 <?php
+
+use Illuminate\Support\Facades\Blade;
 
 it('renders a live search bar bound to the term property', function () {
     $html = Blade::render('<x-site.search-bar label="vertucio" :live="true" />');
@@ -816,9 +979,15 @@ it('renders a non-live search bar that gets to the search route', function () {
         ->toContain(route('search'))
         ->toContain('name="q"');
 });
-```
 
-Add `use Illuminate\Support\Facades\Blade;` at the top of the file.
+it('omits the brand logo by default and shows it when requested', function () {
+    $withoutLogo = Blade::render('<x-site.search-bar label="Vertucio" :live="false" />');
+    $withLogo = Blade::render('<x-site.search-bar label="Vertucio" :live="false" :logo="true" />');
+
+    expect($withoutLogo)->not->toContain('data-brand-logo')
+        ->and($withLogo)->toContain('data-brand-logo');
+});
+```
 
 - [ ] **Step 3: Run test to verify it fails**
 
@@ -833,42 +1002,52 @@ Create `resources/views/components/site/search-bar.blade.php`:
 @props([
     'label',
     'live' => false,
+    'logo' => false,
 ])
 
-<form
-    @if ($live)
-        wire:submit="search"
-    @else
-        method="GET"
-        action="{{ route('search') }}"
+<div class="flex w-full items-center gap-4">
+    @if ($logo)
+        <a href="{{ route('search') }}" data-brand-logo class="flex shrink-0 items-center gap-1">
+            <span class="text-[22px] font-extrabold tracking-tight text-(--serp-text)">{{ __('Vertucio') }}</span>
+            <span class="size-1.5 rounded-full bg-blue-600" aria-hidden="true"></span>
+        </a>
     @endif
-    class="flex w-full items-center gap-3"
->
-    <div class="flex h-11 flex-1 items-center gap-2 rounded-full border border-(--serp-line) bg-(--serp-raised) px-3">
-        <span class="shrink-0 text-sm font-bold text-(--serp-text)">{{ $label }}</span>
 
-        <img src="{{ asset('icons/arrow-left-right.svg') }}" alt="" class="size-4 shrink-0">
-
-        <input
-            type="text"
-            @if ($live)
-                wire:model="term"
-            @else
-                name="q"
-            @endif
-            placeholder="{{ __('Search...') }}"
-            class="min-w-0 flex-1 bg-transparent text-sm text-(--serp-text) placeholder:text-(--serp-meta) focus:outline-none"
-        >
-    </div>
-
-    <button
-        type="submit"
-        class="flex h-11 shrink-0 items-center gap-2 rounded-full bg-zinc-900 px-3.5 text-sm font-semibold text-white"
+    <form
+        @if ($live)
+            wire:submit="search"
+        @else
+            method="GET"
+            action="{{ route('search') }}"
+        @endif
+        class="flex flex-1 items-center gap-3"
     >
-        <img src="{{ asset('icons/search.svg') }}" alt="" class="size-[18px]">
-        <span>{{ __('Search') }}</span>
-    </button>
-</form>
+        <div class="flex h-11 flex-1 items-center gap-2 rounded-full border border-(--serp-line) bg-(--serp-raised) px-3">
+            <span class="shrink-0 text-sm font-bold text-(--serp-text)">{{ $label }}</span>
+
+            <img src="{{ asset('icons/arrow-left-right.svg') }}" alt="" class="size-4 shrink-0">
+
+            <input
+                type="text"
+                @if ($live)
+                    wire:model="term"
+                @else
+                    name="q"
+                @endif
+                placeholder="{{ __('Search...') }}"
+                class="min-w-0 flex-1 bg-transparent text-sm text-(--serp-text) placeholder:text-(--serp-meta) focus:outline-none"
+            >
+        </div>
+
+        <button
+            type="submit"
+            class="flex h-11 shrink-0 items-center gap-2 rounded-full bg-zinc-900 px-3.5 text-sm font-semibold text-white"
+        >
+            <img src="{{ asset('icons/search.svg') }}" alt="" class="size-[18px]">
+            <span>{{ __('Search') }}</span>
+        </button>
+    </form>
+</div>
 ```
 
 - [ ] **Step 5: Run test to verify it passes**
@@ -883,12 +1062,12 @@ vendor/bin/pint --dirty --format agent
 git add public/icons/arrow-left-right.svg public/icons/search.svg \
         resources/views/components/site/search-bar.blade.php \
         tests/Feature/Site/SearchBarComponentTest.php
-git commit -m "Add shared search-bar component matching the Figma design"
+git commit -m "Add shared search-bar component with an optional brand logo"
 ```
 
 ---
 
-### Task 7: Shared `x-site.footer` component
+### Task 8: Shared `x-site.footer` component
 
 **Files:**
 - Create: `resources/views/components/site/footer.blade.php`
@@ -903,6 +1082,8 @@ Create `tests/Feature/Site/FooterComponentTest.php`:
 
 ```php
 <?php
+
+use Illuminate\Support\Facades\Blade;
 
 it('links to the privacy and sponsor routes', function () {
     $html = Blade::render('<x-site.footer />');
@@ -920,8 +1101,6 @@ it('bolds the active page link', function () {
     expect($html)->toContain('font-semibold');
 });
 ```
-
-Add `use Illuminate\Support\Facades\Blade;` at the top of the file.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -972,14 +1151,14 @@ git commit -m "Add shared footer component"
 
 ---
 
-### Task 8: Privacy Policy page
+### Task 9: Privacy Policy page
 
 **Files:**
 - Create: `resources/views/pages/privacy.blade.php`
 - Test: `tests/Feature/Site/PrivacyPageTest.php`
 
 **Interfaces:**
-- Consumes: `x-site.footer` (Task 7), `layouts.serp` (existing).
+- Consumes: `x-site.search-bar` (Task 7), `x-site.footer` (Task 8), `layouts.serp` (existing).
 - Produces: `GET /privacy` (route already added in Task 1) renders this view.
 
 - [ ] **Step 1: Write the failing test**
@@ -1012,7 +1191,7 @@ Create `resources/views/pages/privacy.blade.php`:
 
     <div class="flex min-h-screen flex-col">
         <div class="border-b border-(--serp-line) px-4 py-4 md:px-8 xl:px-20">
-            <x-site.search-bar label="{{ config('search.query') }}" :live="false" />
+            <x-site.search-bar label="{{ config('search.query') }}" :live="false" :logo="true" />
         </div>
 
         <main class="mx-auto flex w-full max-w-[720px] flex-1 flex-col gap-6 px-4 py-10 md:px-8">
@@ -1047,11 +1226,9 @@ Create `resources/views/pages/privacy.blade.php`:
 - [ ] **Step 4: Run test to verify it passes**
 
 Run: `php artisan test --compact --filter=PrivacyPageTest`
-Expected: PASS. If `x-layouts.serp` is not usable as a component wrapper (the existing
-`layouts.serp` was written as a `#[Layout(...)]` target, not necessarily anonymous-component
-compatible), open `resources/views/layouts/serp.blade.php` first — it already just renders
-`{{ $slot }}` inside `<body>`, which **is** anonymous-component compatible, so
-`<x-layouts.serp>...</x-layouts.serp>` works without changes to that file.
+Expected: PASS. `resources/views/layouts/serp.blade.php` already just renders `{{ $slot }}` inside
+`<body>`, so `<x-layouts.serp>...</x-layouts.serp>` works as an anonymous component without
+changes to that file.
 
 - [ ] **Step 5: Format and commit**
 
@@ -1063,7 +1240,7 @@ git commit -m "Add the Privacy Policy page"
 
 ---
 
-### Task 9: Custom pagination view matching Figma
+### Task 10: Custom pagination view matching Figma, with named-paginator support
 
 **Files:**
 - Create: `resources/views/vendor/pagination/serp.blade.php`
@@ -1071,10 +1248,10 @@ git commit -m "Add the Privacy Policy page"
 - Test: `tests/Feature/Site/PaginationViewTest.php`
 
 **Interfaces:**
-- Produces: a Blade view usable as `$paginator->links('vendor.pagination.serp')`, driving
-  `wire:click="previousPage"` / `wire:click="nextPage"` / `wire:click="gotoPage(N)"` — these three
-  method names are provided by Livewire's `WithPagination` trait (used in Task 11) and must not be
-  renamed.
+- Produces: a Blade view usable as `$paginator->links('vendor.pagination.serp')` **or**
+  `$paginator->links('vendor.pagination.serp', ['pageName' => 'news'])` — every section on the
+  search page (Task 12) paginates independently, so the view must call `previousPage`/`nextPage`/
+  `setPage` with the correct page name, defaulting to `'page'` when none is passed.
 
 - [ ] **Step 1: Confirm the icon assets exist**
 
@@ -1090,7 +1267,7 @@ Create `tests/Feature/Site/PaginationViewTest.php`:
 
 use Illuminate\Pagination\LengthAwarePaginator;
 
-it('renders numbered pill buttons for each page', function () {
+it('renders numbered pill buttons for each page, using the default page name', function () {
     $paginator = new LengthAwarePaginator(
         items: range(1, 4),
         total: 12,
@@ -1101,10 +1278,26 @@ it('renders numbered pill buttons for each page', function () {
     $html = $paginator->links('vendor.pagination.serp')->render();
 
     expect($html)
-        ->toContain('wire:click="gotoPage(1)"')
-        ->toContain('wire:click="gotoPage(3)"')
-        ->toContain('wire:click="previousPage"')
-        ->toContain('wire:click="nextPage"');
+        ->toContain("setPage(1, 'page')")
+        ->toContain("setPage(3, 'page')")
+        ->toContain("previousPage('page')")
+        ->toContain("nextPage('page')");
+});
+
+it('renders wire:click calls using a custom page name', function () {
+    $paginator = new LengthAwarePaginator(
+        items: range(1, 4),
+        total: 12,
+        perPage: 4,
+        currentPage: 1,
+        options: ['pageName' => 'news'],
+    );
+
+    $html = $paginator->links('vendor.pagination.serp', ['pageName' => 'news'])->render();
+
+    expect($html)
+        ->toContain("setPage(2, 'news')")
+        ->toContain("nextPage('news')");
 });
 
 it('renders no navigation when there is only one page', function () {
@@ -1124,6 +1317,10 @@ Expected: FAIL — view `vendor.pagination.serp` not found.
 Create `resources/views/vendor/pagination/serp.blade.php`:
 
 ```blade
+@php
+    $pageName ??= 'page';
+@endphp
+
 @if ($paginator->hasPages())
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center gap-2">
         @if ($paginator->onFirstPage())
@@ -1133,7 +1330,7 @@ Create `resources/views/vendor/pagination/serp.blade.php`:
         @else
             <button
                 type="button"
-                wire:click="previousPage"
+                wire:click="previousPage('{{ $pageName }}')"
                 wire:loading.attr="disabled"
                 class="flex size-8 items-center justify-center rounded-full border border-(--serp-line) bg-(--serp-raised) hover:bg-(--serp-line)"
             >
@@ -1157,7 +1354,7 @@ Create `resources/views/vendor/pagination/serp.blade.php`:
                     @else
                         <button
                             type="button"
-                            wire:click="gotoPage({{ $page }})"
+                            wire:click="setPage({{ $page }}, '{{ $pageName }}')"
                             class="flex size-8 items-center justify-center rounded-full border border-(--serp-line) bg-(--serp-raised) text-[13px] font-medium text-(--serp-meta) hover:bg-(--serp-line)"
                         >
                             {{ $page }}
@@ -1170,7 +1367,7 @@ Create `resources/views/vendor/pagination/serp.blade.php`:
         @if ($paginator->hasMorePages())
             <button
                 type="button"
-                wire:click="nextPage"
+                wire:click="nextPage('{{ $pageName }}')"
                 wire:loading.attr="disabled"
                 class="flex size-8 items-center justify-center rounded-full border border-(--serp-line) bg-(--serp-raised) hover:bg-(--serp-line)"
             >
@@ -1202,7 +1399,7 @@ git commit -m "Add a pagination view matching the Figma pill-button style"
 
 ---
 
-### Task 10: `x-serp.sponsored-row` component
+### Task 11: `x-serp.sponsored-row` component
 
 **Files:**
 - Create: `resources/views/components/serp/sponsored-row.blade.php`
@@ -1213,6 +1410,10 @@ git commit -m "Add a pagination view matching the Figma pill-button style"
   `SponsoredResult`).
 - Produces: `<x-serp.sponsored-row :result="$sponsoredResult" />`.
 
+Each row carries its own inline "Sponsored" label; there is no separate section heading for the
+sponsored block (confirmed against the current Figma file — an earlier text-only design doc had
+this backwards and Figma is the corrected source of truth).
+
 - [ ] **Step 1: Write the failing test**
 
 Create `tests/Feature/Search/SponsoredRowComponentTest.php`:
@@ -1221,6 +1422,7 @@ Create `tests/Feature/Search/SponsoredRowComponentTest.php`:
 <?php
 
 use App\Models\SponsoredResult;
+use Illuminate\Support\Facades\Blade;
 
 it('shows an inline Sponsored label beside the title, no separate heading needed', function () {
     $result = SponsoredResult::factory()->active()->create([
@@ -1249,8 +1451,6 @@ it('renders unlinked text when the URL is unsafe', function () {
     expect($html)->not->toContain('href="javascript:alert(1)"');
 });
 ```
-
-Add `use Illuminate\Support\Facades\Blade;` at the top of the file.
 
 - [ ] **Step 2: Run test to verify it fails**
 
@@ -1317,7 +1517,7 @@ git commit -m "Add sponsored-row component with an inline Sponsored label"
 
 ---
 
-### Task 11: Refactor the search page onto Livewire
+### Task 12: Refactor the search page onto Livewire — live search, four paginated sections
 
 **Files:**
 - Modify: `resources/views/pages/⚡search.blade.php`
@@ -1325,13 +1525,13 @@ git commit -m "Add sponsored-row component with an inline Sponsored label"
 - Test: `tests/Feature/Search/SearchPageFilteringTest.php`
 
 **Interfaces:**
-- Consumes: `LatestSearchResults::for()/paginate()` (Task 4), `SponsoredResult::active()->matching()`
-  (Task 5), `x-site.search-bar` (Task 6), `x-site.footer` (Task 7),
-  `vendor.pagination.serp` (Task 9), `x-serp.sponsored-row` (Task 10).
+- Consumes: `LatestSearchResults::paginate()` (Task 4), `LiveSearch::for()` (Task 5),
+  `SponsoredResult::active()->matching()` (Task 6), `x-site.search-bar` (Task 7), `x-site.footer`
+  (Task 8), `vendor.pagination.serp` (Task 10), `x-serp.sponsored-row` (Task 11).
 - Produces: Livewire component `pages::search` with public property `term`, action method
-  `search(): void`, lifecycle hook `updatedTerm(): void`, and computed properties `news`,
-  `images`, `sponsored`, `results` (a `LengthAwarePaginator`), all consumed by the Blade half of
-  the same file.
+  `search(): void`, lifecycle hook `updatedTerm(): void`, and paginated properties `news`,
+  `images`, `sponsored`, `results` — each a `LengthAwarePaginator`, each tracked under its own
+  named paginator (`'news'`, `'images'`, `'sponsored'`, `'results'`).
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -1347,6 +1547,25 @@ it('renders the page for guests', function () {
 });
 ```
 
+Also update `it('caps each section at the display limit from the design', ...)` in the same file
+— sections are now paginated instead of hard-capped, so "page 1 shows the first N, page 2 has
+more" replaces "beyond N is simply never shown":
+
+```php
+it('shows the first page of each section at the configured page size', function () {
+    seedSnapshot('brave', SearchVertical::Web, 20);
+    seedSnapshot('brave', SearchVertical::News, 20);
+    seedSnapshot('brave', SearchVertical::Images, 20);
+
+    $response = $this->get(route('search'))->assertOk();
+
+    $response->assertSee('web result 4')->assertDontSee('web result 5');
+    $response->assertSee('news result 3')->assertDontSee('news result 4');
+    $response->assertSee('images result 6')->assertDontSee('images result 7');
+    $response->assertSee('wire:click="nextPage(\'results\')"', escape: false);
+});
+```
+
 Then create `tests/Feature/Search/SearchPageFilteringTest.php`:
 
 ```php
@@ -1355,8 +1574,10 @@ Then create `tests/Feature/Search/SearchPageFilteringTest.php`:
 use App\Models\SearchResult;
 use App\Models\SearchSnapshot;
 use App\Models\SponsoredResult;
+use App\Search\Data\SearchResultItem;
 use App\Search\Enums\SearchVertical;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Livewire;
 
 function seedWebResult(string $title, string $description = ''): void
@@ -1376,34 +1597,53 @@ function seedWebResult(string $title, string $description = ''): void
     ]);
 }
 
-it('filters the results section by the typed term', function () {
+it('shows the default monitored-query results when no term is typed', function () {
     seedWebResult('Vertucio pricing guide', 'Plans and pricing');
 
-    Livewire::test('pages::search')
-        ->set('term', 'pricing')
-        ->call('search')
-        ->assertSee('Vertucio pricing guide');
+    Livewire::test('pages::search')->assertSee('Vertucio pricing guide');
 });
 
-it('shows nothing when the term matches no result', function () {
+it('performs a live search when a term is submitted, without persisting anything', function () {
     seedWebResult('Vertucio pricing guide', 'Plans and pricing');
 
+    Cache::put(
+        'search:live:web:live term',
+        collect([new SearchResultItem(position: 1, url: 'https://live.example.com', title: 'Live web result')]),
+    );
+
     Livewire::test('pages::search')
-        ->set('term', 'no such term anywhere')
+        ->set('term', 'live term')
         ->call('search')
+        ->assertSee('Live web result')
         ->assertDontSee('Vertucio pricing guide');
+
+    expect(SearchSnapshot::query()->count())->toBe(0)
+        ->and(SearchResult::query()->count())->toBe(1); // only the seeded one from setup, untouched
 });
 
-it('resets to page one when a new search term is submitted', function () {
-    foreach (range(1, 10) as $i) {
-        seedWebResult("Result number {$i}");
-    }
+it('resets every section to page one when a new search term is submitted', function () {
+    Livewire::test('pages::search')
+        ->call('nextPage', 'results')
+        ->set('term', 'anything')
+        ->call('search')
+        ->assertSet('paginators.results', 1);
+});
+
+it('filters active sponsored results by the typed term', function () {
+    SponsoredResult::factory()->active()->create([
+        'title' => 'Vertucio Pricing',
+        'description' => 'Compare plans.',
+    ]);
+
+    SponsoredResult::factory()->active()->create([
+        'title' => 'Unrelated promo',
+    ]);
 
     Livewire::test('pages::search')
-        ->call('nextPage')
-        ->set('term', 'Result')
+        ->set('term', 'Pricing')
         ->call('search')
-        ->assertSet('paginators.page', 1);
+        ->assertSee('Vertucio Pricing')
+        ->assertDontSee('Unrelated promo');
 });
 
 it('renders sponsored rows with the inline label and no section heading', function () {
@@ -1418,24 +1658,14 @@ it('renders sponsored rows with the inline label and no section heading', functi
         ->assertSee('Sponsored')
         ->assertDontSee('SPONSORED RESULTS'); // no separate section heading
 });
-
-it('renders pagination controls once there is more than one page of results', function () {
-    foreach (range(1, 10) as $i) {
-        seedWebResult("Result number {$i}");
-    }
-
-    $this->get(route('search'))
-        ->assertOk()
-        ->assertSee('wire:click="nextPage"', escape: false);
-});
 ```
 
 - [ ] **Step 2: Run tests to verify they fail**
 
 Run: `php artisan test --compact --filter=SearchPageTest`
 Run: `php artisan test --compact --filter=SearchPageFilteringTest`
-Expected: FAIL — the page is not yet a stateful Livewire component (`term`/`search`/pagination
-don't exist), and the sponsored block still renders under a section heading.
+Expected: FAIL — the page is not yet a stateful Livewire component with a `term`/`search`/live
+path, and the sponsored block still renders under a section heading.
 
 - [ ] **Step 3: Rewrite the page**
 
@@ -1444,11 +1674,13 @@ Replace the full contents of `resources/views/pages/⚡search.blade.php`:
 ```php
 <?php
 
+use App\Models\SearchResult;
 use App\Models\SponsoredResult;
+use App\Search\Actions\LiveSearch;
 use App\Search\Enums\SearchVertical;
 use App\Search\Queries\LatestSearchResults;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator as ConcreteLengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
@@ -1462,13 +1694,15 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
     use WithPagination;
 
     /**
-     * Display caps taken from the design. The fetch layer stores
-     * search.results_per_vertical (20) per snapshot; these govern how many of
-     * those the page shows.
+     * Per-page sizes taken from the design's original display caps. These
+     * are deliberately modest for now — raise them directly here once the
+     * live/cached search path has proven itself in production.
      */
-    public const NEWS_LIMIT = 3;
+    public const NEWS_PER_PAGE = 3;
 
-    public const IMAGE_LIMIT = 6;
+    public const IMAGES_PER_PAGE = 6;
+
+    public const SPONSORED_PER_PAGE = 3;
 
     public const RESULTS_PER_PAGE = 4;
 
@@ -1478,68 +1712,101 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
     /**
      * Any change to the bound term — whether typed live or synced on a
      * deferred submit — should not leave the user stranded on a page number
-     * that no longer exists for the new result set.
+     * that no longer exists for the new result set. Every section resets
+     * independently since each tracks its own page.
      */
     public function updatedTerm(): void
     {
-        $this->resetPage();
+        $this->resetPage('news');
+        $this->resetPage('images');
+        $this->resetPage('sponsored');
+        $this->resetPage('results');
     }
 
     public function search(): void
     {
-        $this->resetPage();
+        $this->updatedTerm();
     }
 
-    /**
-     * @return Collection<int, \App\Models\SearchResult>
-     */
     #[Computed]
-    public function news(): Collection
+    public function news(): LengthAwarePaginator
     {
-        return app(LatestSearchResults::class)->for(SearchVertical::News, self::NEWS_LIMIT, $this->term);
+        return $this->paginatedVertical(SearchVertical::News, self::NEWS_PER_PAGE, 'news');
     }
 
-    /**
-     * @return Collection<int, \App\Models\SearchResult>
-     */
     #[Computed]
-    public function images(): Collection
+    public function images(): LengthAwarePaginator
     {
-        return app(LatestSearchResults::class)->for(SearchVertical::Images, self::IMAGE_LIMIT, $this->term);
-    }
-
-    /**
-     * @return Collection<int, SponsoredResult>
-     */
-    #[Computed]
-    public function sponsored(): Collection
-    {
-        return SponsoredResult::active()
-            ->when(filled($this->term), fn ($query) => $query->matching($this->term))
-            ->orderBy('position')
-            ->orderBy('id')
-            ->get();
+        return $this->paginatedVertical(SearchVertical::Images, self::IMAGES_PER_PAGE, 'images');
     }
 
     #[Computed]
     public function results(): LengthAwarePaginator
     {
-        return app(LatestSearchResults::class)->paginate(SearchVertical::Web, self::RESULTS_PER_PAGE, $this->term);
+        return $this->paginatedVertical(SearchVertical::Web, self::RESULTS_PER_PAGE, 'results');
+    }
+
+    #[Computed]
+    public function sponsored(): LengthAwarePaginator
+    {
+        return SponsoredResult::active()
+            ->when(filled($this->term), fn ($query) => $query->matching($this->term))
+            ->orderBy('position')
+            ->orderBy('id')
+            ->paginate(self::SPONSORED_PER_PAGE, ['*'], 'sponsored');
+    }
+
+    /**
+     * With no term typed, every section reads the daily-collected snapshot
+     * for the monitored query, exactly as before. Once a term is submitted,
+     * News/Images/Results switch to a live, cached, non-persisted search —
+     * see LiveSearch — wrapped in unsaved SearchResult instances so the
+     * existing result-card components render them identically to stored
+     * rows, without ever calling save().
+     */
+    private function paginatedVertical(SearchVertical $vertical, int $perPage, string $pageName): LengthAwarePaginator
+    {
+        if (blank($this->term)) {
+            return app(LatestSearchResults::class)->paginate($vertical, $perPage, $pageName);
+        }
+
+        $items = app(LiveSearch::class)->for($vertical, $this->term)
+            ->map(fn ($item) => SearchResult::make([
+                'position' => $item->position,
+                'url' => $item->url,
+                'title' => $item->title,
+                'description' => $item->description,
+                'source' => $item->source,
+                'published_at' => $item->publishedAt,
+                'image_url' => $item->imageUrl,
+                'meta' => $item->meta,
+            ]));
+
+        $page = $this->getPage($pageName);
+        $slice = $items->forPage($page, $perPage)->values();
+
+        return new ConcreteLengthAwarePaginator(
+            items: $slice,
+            total: $items->count(),
+            perPage: $perPage,
+            currentPage: $page,
+            options: ['pageName' => $pageName],
+        );
     }
 
     public function newsCollected(): bool
     {
-        return app(LatestSearchResults::class)->wasCollected(SearchVertical::News);
+        return filled($this->term) || app(LatestSearchResults::class)->wasCollected(SearchVertical::News);
     }
 
     public function imagesCollected(): bool
     {
-        return app(LatestSearchResults::class)->wasCollected(SearchVertical::Images);
+        return filled($this->term) || app(LatestSearchResults::class)->wasCollected(SearchVertical::Images);
     }
 
     public function resultsCollected(): bool
     {
-        return app(LatestSearchResults::class)->wasCollected(SearchVertical::Web);
+        return filled($this->term) || app(LatestSearchResults::class)->wasCollected(SearchVertical::Web);
     }
 
     public function lastCollectedAt(): ?Carbon
@@ -1550,7 +1817,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
 
 <div class="flex min-h-screen flex-col">
     <div class="border-b border-(--serp-line) px-4 py-4 md:px-8 xl:px-20">
-        <x-site.search-bar label="{{ config('search.query') }}" :live="true" />
+        <x-site.search-bar label="{{ config('search.query') }}" :live="true" :logo="true" />
     </div>
 
     <main class="mx-auto flex w-full max-w-[1280px] flex-1 flex-col gap-8 px-4 py-6 md:gap-10 md:px-8 md:py-8 xl:gap-12 xl:px-20 xl:py-10">
@@ -1560,7 +1827,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                 <span class="font-medium text-(--serp-text)">{{ filled($term) ? $term : config('search.query') }}</span>
             </p>
 
-            @if ($this->lastCollectedAt())
+            @if (blank($term) && $this->lastCollectedAt())
                 <p class="text-xs text-(--serp-meta)">
                     {{ __('Updated') }}
                     <time datetime="{{ $this->lastCollectedAt()->toIso8601String() }}">
@@ -1576,6 +1843,8 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                     <x-serp.news-card :result="$result" :wire:key="'news-'.$result->id" />
                 @endforeach
             </div>
+
+            <div class="pt-4">{{ $this->news->links('vendor.pagination.serp', ['pageName' => 'news']) }}</div>
         </x-serp.section>
 
         <x-serp.section :heading="__('Images')" :collected="$this->imagesCollected()" :is-empty="$this->images->isEmpty()">
@@ -1584,6 +1853,8 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                     <x-serp.image-card :result="$result" :wire:key="'image-'.$result->id" />
                 @endforeach
             </div>
+
+            <div class="pt-4">{{ $this->images->links('vendor.pagination.serp', ['pageName' => 'images']) }}</div>
         </x-serp.section>
 
         @if ($this->sponsored->isNotEmpty())
@@ -1591,6 +1862,8 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                 @foreach ($this->sponsored as $result)
                     <x-serp.sponsored-row :result="$result" :wire:key="'sponsored-'.$result->id" />
                 @endforeach
+
+                <div>{{ $this->sponsored->links('vendor.pagination.serp', ['pageName' => 'sponsored']) }}</div>
             </div>
         @endif
 
@@ -1601,9 +1874,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                 @endforeach
             </div>
 
-            <div class="pt-4">
-                {{ $this->results->links('vendor.pagination.serp') }}
-            </div>
+            <div class="pt-4">{{ $this->results->links('vendor.pagination.serp', ['pageName' => 'results']) }}</div>
         </x-serp.section>
     </main>
 
@@ -1611,15 +1882,19 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
 </div>
 ```
 
+Note the `SearchResult::make(...)` payload passes `$item->publishedAt`, which is already
+`?Illuminate\Support\Carbon` on `SearchResultItem` — `SearchResult`'s `published_at` cast accepts
+a `Carbon` instance directly, no string conversion needed.
+
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `php artisan test --compact --filter=SearchPageTest`
 Run: `php artisan test --compact --filter=SearchPageFilteringTest`
-Expected: PASS. If `assertSet('paginators.page', 1)` fails because Livewire's pagination trait
-namespaces the page key differently (e.g. `paginators.default` vs a keyed array), inspect the
-actual property with `dd($component->get('paginators'))` in a scratch test run and adjust the
-assertion key to match — the behavior under test is "page resets to 1", not the exact internal
-key name.
+Expected: PASS. If `assertSet('paginators.results', 1)` fails because Livewire's pagination trait
+stores named pages under a different key shape than a flat `paginators.results`, inspect the
+actual property with `Livewire::test('pages::search')->call('nextPage', 'results')->dump('paginators')`
+in a scratch run and adjust the assertion path to match — the behavior under test is "the results
+section's page resets to 1 on a new search", not the exact internal storage shape.
 
 - [ ] **Step 5: Run the full existing Search test suite for regressions**
 
@@ -1635,12 +1910,12 @@ vendor/bin/pint --dirty --format agent
 git add resources/views/pages/⚡search.blade.php \
         tests/Feature/Search/SearchPageTest.php \
         tests/Feature/Search/SearchPageFilteringTest.php
-git commit -m "Refactor the search page onto Livewire with a live search bar and pagination"
+git commit -m "Refactor the search page onto Livewire with a live, cached search bar and pagination on every section"
 ```
 
 ---
 
-### Task 12: Sponsor Us page
+### Task 13: Sponsor Us page
 
 **Files:**
 - Create: `resources/views/pages/⚡sponsor.blade.php`
@@ -1648,7 +1923,7 @@ git commit -m "Refactor the search page onto Livewire with a live search bar and
 
 **Interfaces:**
 - Consumes: `SponsorshipInquiry` (Task 2), `SponsorshipInquiryReceived` (Task 3), `x-site.search-bar`
-  (Task 6), `x-site.footer` (Task 7), `config('sponsorship.*')` (Task 1).
+  (Task 7), `x-site.footer` (Task 8), `config('sponsorship.*')` (Task 1).
 - Produces: Livewire component `pages::sponsor` with public properties `fullName`, `email`,
   `companyName`, `monthlyBudget`, `message`, `submitted`, and action method `submit(): void`.
 
@@ -1801,7 +2076,7 @@ new #[Layout('layouts.serp')] #[Title('Sponsor Us')] class extends Component
 
 <div class="flex min-h-screen flex-col">
     <div class="border-b border-(--serp-line) px-4 py-4 md:px-8 xl:px-20">
-        <x-site.search-bar label="Vertucio" :live="false" />
+        <x-site.search-bar label="Vertucio" :live="false" :logo="true" />
     </div>
 
     <main class="mx-auto flex w-full max-w-[680px] flex-1 flex-col gap-10 px-4 py-10 md:px-8 md:py-16">
@@ -1935,7 +2210,7 @@ git commit -m "Add the Sponsor Us page with lead-gen form and PayPal link"
 
 ---
 
-### Task 13: Full regression pass
+### Task 14: Full regression pass
 
 **Files:** none created — verification only.
 
@@ -1962,12 +2237,15 @@ Expected: no further changes reported (everything was already formatted per-task
 
 Run: `composer run dev` (or `php artisan serve` + `pnpm run dev` per the project's existing
 dev workflow), then in a browser:
-- Visit `/` — confirm the search bar renders, typing a term and clicking Search filters the
-  News/Images/Sponsored/Results sections without a full page reload, and pagination buttons under
-  Results work.
+- Visit `/` — confirm the search bar and brand logo render, typing a term and clicking Search
+  performs a live search (check `storage/logs/laravel.log` or a network tab — the request goes to
+  the configured search providers) and filters News/Images/Sponsored/Results without a full page
+  reload; submitting the same term again should not trigger new provider calls (cached).
+  Confirm pagination buttons under each of the four sections work independently — advancing one
+  section's page does not move the others.
 - Visit `/sponsor` — confirm the form validates, a successful submission shows the confirmation
   message, and the PayPal button links out correctly.
-- Visit `/privacy` — confirm it renders with the shared header/footer.
+- Visit `/privacy` — confirm it renders with the shared header/footer and brand logo.
 - Confirm the footer's "Sponsor Us" / "Privacy Policy" links work from every page, and the active
   link is bolded on its own page.
 
