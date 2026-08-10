@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Carbon\CarbonImmutable;
 use Database\Factories\SearchResultFactory;
+use Illuminate\Database\Eloquent\Attributes\Guarded;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
+ * A single result row belonging to a snapshot.
+ *
+ * Unguarded: written only by StoreSearchSnapshot, never from request input.
+ *
  * @property int $id
  * @property int $search_snapshot_id
  * @property int $position
@@ -22,17 +27,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property array<string, mixed>|null $meta
  * @property-read SearchSnapshot $snapshot
  */
+#[Guarded([])]
 class SearchResult extends Model
 {
     /** @use HasFactory<SearchResultFactory> */
     use HasFactory;
-
-    /**
-     * Written only by StoreSearchSnapshot, never from request input.
-     *
-     * @var array<int, string>
-     */
-    protected $guarded = [];
 
     /**
      * @return BelongsTo<SearchSnapshot, $this>
