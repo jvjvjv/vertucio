@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\SearchResult;
 use App\Models\SponsoredResult;
-use App\Search\Actions\LiveSearch;
+use App\Search\Actions\PaginateSearchVertical;
 use App\Search\Enums\SearchVertical;
 use App\Search\Queries\LatestSearchResults;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Pagination\LengthAwarePaginator as ConcreteLengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
@@ -86,38 +84,11 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
      * With no term typed, every section reads the daily-collected snapshot
      * for the monitored query, exactly as before. Once a term is submitted,
      * News/Images/Results switch to a live, cached, non-persisted search —
-     * see LiveSearch — wrapped in unsaved SearchResult instances so the
-     * existing result-card components render them identically to stored
-     * rows, without ever calling save().
+     * see PaginateSearchVertical and the LiveSearch action it delegates to.
      */
     private function paginatedVertical(SearchVertical $vertical, int $perPage, string $pageName): LengthAwarePaginator
     {
-        if (blank($this->term)) {
-            return app(LatestSearchResults::class)->paginate($vertical, $perPage, $pageName);
-        }
-
-        $items = app(LiveSearch::class)->for($vertical, $this->term)
-            ->map(fn ($item) => SearchResult::make([
-                'position' => $item->position,
-                'url' => $item->url,
-                'title' => $item->title,
-                'description' => $item->description,
-                'source' => $item->source,
-                'published_at' => $item->publishedAt,
-                'image_url' => $item->imageUrl,
-                'meta' => $item->meta,
-            ]));
-
-        $page = $this->getPage($pageName);
-        $slice = $items->forPage($page, $perPage)->values();
-
-        return new ConcreteLengthAwarePaginator(
-            items: $slice,
-            total: $items->count(),
-            perPage: $perPage,
-            currentPage: $page,
-            options: ['pageName' => $pageName],
-        );
+        return app(PaginateSearchVertical::class)->for($vertical, $perPage, $pageName, $this->term);
     }
 
     public function newsCollected(): bool
@@ -146,7 +117,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
         <x-site.search-bar label="{{ config('search.query') }}" :live="true" :logo="true" />
     </div>
 
-    <main class="mx-auto flex w-full max-w-[1280px] flex-1 flex-col gap-8 px-4 py-6 md:gap-10 md:px-8 md:py-8 xl:gap-12 xl:px-20 xl:py-10">
+    <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-8 px-4 py-6 md:gap-10 md:px-8 md:py-8 xl:gap-12 xl:px-20 xl:py-10">
         <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
             <p class="text-sm text-(--serp-meta)">
                 {{ __('Showing results for') }}
