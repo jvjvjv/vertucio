@@ -5,10 +5,10 @@ namespace App\Search\Actions;
 use App\Search\Contracts\SearchProvider;
 use App\Search\Data\SearchResultItem;
 use App\Search\Enums\SearchVertical;
-use App\Search\Exceptions\SearchProviderException;
 use App\Search\SearchManager;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use Throwable;
 
 /**
  * An on-demand search for whatever the visitor typed into the search bar.
@@ -41,7 +41,9 @@ final class LiveSearch
                 ->flatMap(function (SearchProvider $provider) use ($vertical, $query): array {
                     try {
                         return $this->manager->fetch($provider, $vertical, $query)->items;
-                    } catch (SearchProviderException) {
+                    } catch (Throwable $e) {
+                        report($e);
+
                         return [];
                     }
                 })

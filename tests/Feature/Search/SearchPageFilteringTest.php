@@ -3,11 +3,57 @@
 use App\Models\SearchResult;
 use App\Models\SearchSnapshot;
 use App\Models\SponsoredResult;
+use App\Search\Contracts\SearchProvider;
+use App\Search\Data\SearchQuery;
 use App\Search\Data\SearchResultItem;
+use App\Search\Data\SearchResultSet;
 use App\Search\Enums\SearchVertical;
+use App\Search\SearchManager;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Livewire;
+
+/**
+ * Swaps the SearchManager singleton for one built from a single fake
+ * provider, so tests exercise the live-search path through LiveSearch's
+ * real container plumbing instead of hardcoding its private cache-key
+ * format via Cache::put(...).
+ *
+ * @param  array<int, SearchResultItem>  $items
+ */
+function fakeSearchManager(SearchVertical $vertical, array $items): SearchManager
+{
+    $provider = new class($vertical, $items) implements SearchProvider
+    {
+        /**
+         * @param  array<int, SearchResultItem>  $items
+         */
+        public function __construct(private SearchVertical $vertical, private array $items) {}
+
+        public function name(): string
+        {
+            return 'fake';
+        }
+
+        public function supports(SearchVertical $vertical): bool
+        {
+            return $vertical === $this->vertical;
+        }
+
+        public function search(SearchQuery $query): SearchResultSet
+        {
+            return new SearchResultSet(
+                provider: 'fake',
+                vertical: $query->vertical,
+                query: $query->query,
+                fetchedAt: Carbon::now(),
+                items: $this->items,
+            );
+        }
+    };
+
+    return new SearchManager([$provider]);
+}
 
 function seedWebResult(string $title, string $description = ''): void
 {
@@ -86,4 +132,38 @@ it('renders sponsored rows with the inline label and no section heading', functi
         ->assertSee('Vertucio Pricing')
         ->assertSee('Sponsored')
         ->assertDontSee('SPONSORED RESULTS'); // no separate section heading
+});
+
+it('paginates within a live search and shows distinct results per page', function () {
+    // RESULTS_PER_PAGE is 4, so 5 unsaved live items span exactly two pages.
+    $items = collect(range(1, 5))
+        ->map(fn (int $i) => new SearchResultItem(
+            position: $i,
+            url: "https://live.example.com/{$i}",
+            title: "Live web result {$i}",
+        ))
+        ->all();
+
+    $this->app->instance(SearchManager::class, fakeSearchManager(SearchVertical::Web, $items));
+
+    Livewire::test('pages::search')
+        ->set('term', 'pagination term')
+        ->call('search')
+        ->assertSee('Live web result 1')
+        ->assertDontSee('Live web result 5')
+        ->call('nextPage', 'results')
+        ->assertSee('Live web result 5')
+        ->assertDontSee('Live web result 1');
+});
+
+it('initializes the search term from the ?q= query string on a fresh page load', function () {
+    $items = [new SearchResultItem(position: 1, url: 'https://live.example.com/q', title: 'Query string result')];
+
+    $this->app->instance(SearchManager::class, fakeSearchManager(SearchVertical::Web, $items));
+
+    $this->get(route('search', ['q' => 'some term']))
+        ->assertOk()
+        ->assertSee('Showing results for')
+        ->assertSee('some term')
+        ->assertSee('Query string result');
 });

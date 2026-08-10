@@ -29,7 +29,7 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                        <span class="flex size-8 items-center justify-center rounded-full bg-zinc-900 text-[13px] font-semibold text-white">
+                        <span aria-current="page" class="flex size-8 items-center justify-center rounded-full border border-(--serp-line) bg-zinc-900 text-[13px] font-semibold text-white">
                             {{ $page }}
                         </span>
                     @else

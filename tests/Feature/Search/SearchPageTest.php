@@ -31,7 +31,8 @@ function seedSnapshot(string $provider, SearchVertical $vertical, int $count, ar
 it('renders the page for guests', function () {
     $this->get(route('search'))
         ->assertOk()
-        ->assertSee('Vertucio');
+        ->assertSee('Vertucio')
+        ->assertSee('vertucio');
 });
 
 it('shows results from each vertical', function () {

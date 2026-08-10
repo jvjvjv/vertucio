@@ -40,7 +40,7 @@
 
         <button
             type="submit"
-            class="flex h-11 shrink-0 items-center gap-2 rounded-full bg-zinc-900 px-3.5 text-sm font-semibold text-white"
+            class="flex h-11 shrink-0 items-center gap-2 rounded-full border border-(--serp-line) bg-zinc-900 px-3.5 text-sm font-semibold text-white"
         >
             <img src="{{ asset('icons/search.svg') }}" alt="" class="size-[18px]">
             <span>{{ __('Search') }}</span>

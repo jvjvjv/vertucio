@@ -166,7 +166,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
         <x-serp.section :heading="__('News')" :collected="$this->newsCollected()" :is-empty="$this->news->isEmpty()">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($this->news as $result)
-                    <x-serp.news-card :result="$result" :wire:key="'news-'.$result->id" />
+                    <x-serp.news-card :result="$result" :wire:key="'news-'.($result->id ?? md5($result->url))" />
                 @endforeach
             </div>
 
@@ -176,7 +176,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
         <x-serp.section :heading="__('Images')" :collected="$this->imagesCollected()" :is-empty="$this->images->isEmpty()">
             <div class="grid grid-cols-3 gap-4 xl:grid-cols-6">
                 @foreach ($this->images as $result)
-                    <x-serp.image-card :result="$result" :wire:key="'image-'.$result->id" />
+                    <x-serp.image-card :result="$result" :wire:key="'image-'.($result->id ?? md5($result->url))" />
                 @endforeach
             </div>
 
@@ -196,7 +196,7 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
         <x-serp.section :heading="__('Results')" :collected="$this->resultsCollected()" :is-empty="$this->results->isEmpty()">
             <div class="flex flex-col gap-6 md:gap-7 xl:gap-8">
                 @foreach ($this->results as $result)
-                    <x-serp.result-row :result="$result" :wire:key="'result-'.$result->id" />
+                    <x-serp.result-row :result="$result" :wire:key="'result-'.($result->id ?? md5($result->url))" />
                 @endforeach
             </div>
 

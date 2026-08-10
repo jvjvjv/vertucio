@@ -90,6 +90,37 @@ it('skips a provider that throws instead of failing the whole search', function 
         ->and($results->first()->title)->toBe('Still here');
 });
 
+it('skips a provider that throws an exception unrelated to search providers', function () {
+    $item = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'Still here');
+
+    $working = liveProvider('working', [SearchVertical::Web], [$item]);
+
+    $broken = new class implements SearchProvider
+    {
+        public function name(): string
+        {
+            return 'broken';
+        }
+
+        public function supports(SearchVertical $vertical): bool
+        {
+            return $vertical === SearchVertical::Web;
+        }
+
+        public function search(SearchQuery $query): SearchResultSet
+        {
+            throw new RuntimeException('DNS resolution failed');
+        }
+    };
+
+    $manager = new SearchManager([$working, $broken]);
+
+    $results = (new LiveSearch($manager))->for(SearchVertical::Web, 'vertucio');
+
+    expect($results)->toHaveCount(1)
+        ->and($results->first()->title)->toBe('Still here');
+});
+
 it('caches the result so a repeated query does not call providers again', function () {
     $item = new SearchResultItem(position: 1, url: 'https://a.example.com', title: 'Cached once');
     $calls = 0;
