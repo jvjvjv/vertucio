@@ -43,6 +43,34 @@ class SearchResult extends Model
     }
 
     /**
+     * The link target, or null when the stored URL is not safe to navigate to.
+     *
+     * Result URLs arrive from third-party search APIs and are never authored
+     * here. Blade escaping protects the attribute boundary but not the scheme,
+     * so a javascript:, data:, or vbscript: URL would still execute on click.
+     * Callers render unlinked text when this returns null.
+     */
+    public function safeUrl(): ?string
+    {
+        return $this->safeHttpUrl($this->url);
+    }
+
+    /**
+     * The thumbnail to render, or null when the stored value is not a plain
+     * http(s) image reference.
+     */
+    public function safeImageUrl(): ?string
+    {
+        $thumbnail = $this->image_url;
+
+        if (! is_string($thumbnail) || $thumbnail === '') {
+            $thumbnail = is_array($this->meta) ? ($this->meta['thumbnail'] ?? null) : null;
+        }
+
+        return is_string($thumbnail) ? $this->safeHttpUrl($thumbnail) : null;
+    }
+
+    /**
      * The publisher host to show above a result.
      *
      * Google News RSS hands back an opaque news.google.com redirect as the
@@ -86,5 +114,26 @@ class SearchResult extends Model
     private function stripWww(string $host): string
     {
         return (string) preg_replace('/^www\./i', '', $host);
+    }
+
+    /**
+     * Allow-list http and https. Anything else — including scheme-relative and
+     * schemeless values, which resolve unpredictably — is rejected.
+     */
+    private function safeHttpUrl(string $url): ?string
+    {
+        $trimmed = trim($url);
+
+        if ($trimmed === '') {
+            return null;
+        }
+
+        $scheme = parse_url($trimmed, PHP_URL_SCHEME);
+
+        if (! is_string($scheme)) {
+            return null;
+        }
+
+        return in_array(strtolower($scheme), ['http', 'https'], true) ? $trimmed : null;
     }
 }
