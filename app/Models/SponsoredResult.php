@@ -59,6 +59,29 @@ class SponsoredResult extends Model
     }
 
     /**
+     * Optional title/description filter, applied alongside active().
+     *
+     * A null or blank term is a no-op — callers gate this with
+     * `when(filled($term), ...)` rather than always calling it, but the
+     * no-op behavior here makes that gate a convenience, not a requirement.
+     *
+     * @param  Builder<$this>  $query
+     */
+    #[Scope]
+    protected function matching(Builder $query, ?string $term): void
+    {
+        if (blank($term)) {
+            return;
+        }
+
+        $query->where(
+            fn (Builder $query) => $query
+                ->where('title', 'like', "%{$term}%")
+                ->orWhere('description', 'like', "%{$term}%")
+        );
+    }
+
+    /**
      * Where this promo sits relative to its window.
      *
      * Expired wins over Scheduled: a closed window is closed regardless of

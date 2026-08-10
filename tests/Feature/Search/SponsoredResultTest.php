@@ -54,3 +54,26 @@ it('provides factory states for each status', function () {
         ->and(SponsoredResult::factory()->scheduled()->create()->status())->toBe(SponsorshipStatus::Scheduled)
         ->and(SponsoredResult::factory()->expired()->create()->status())->toBe(SponsorshipStatus::Expired);
 });
+
+it('filters active sponsored results by a search term', function () {
+    SponsoredResult::factory()->active()->create([
+        'title' => 'Vertucio pricing guide',
+        'description' => 'Plans and pricing',
+    ]);
+
+    SponsoredResult::factory()->active()->create([
+        'title' => 'Unrelated promo',
+        'description' => 'General information about our company',
+    ]);
+
+    $results = SponsoredResult::active()->matching('pricing')->get();
+
+    expect($results)->toHaveCount(1)
+        ->and($results->first()->title)->toBe('Vertucio pricing guide');
+});
+
+it('leaves the active set unfiltered when the term is blank', function () {
+    SponsoredResult::factory()->active()->count(2)->create();
+
+    expect(SponsoredResult::active()->matching(null)->get())->toHaveCount(2);
+});
