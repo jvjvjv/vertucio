@@ -20,6 +20,7 @@ Spec: `docs/superpowers/specs/2026-08-10-sponsored-results-design.md`
 - **Artisan generators:** use `php artisan make:* --no-interaction` to create files, then edit them.
 - **Window boundaries are half-open: `starts_at <= now` (inclusive) and `ends_at > now` (exclusive).** This exact rule appears in Tasks 3–6. Do not restate it as `>=` on the end.
 - **Test commands:** `php artisan test --compact --filter=<name>` for a subset; `composer types:check` for Larastan; `composer lint` for Pint.
+- **Larastan baseline: `composer types:check` already fails with exactly 2 pre-existing errors** — `app/Concerns/ProfileValidationRules.php:9` (trait used zero times) and `database/factories/UserFactory.php:49` (missing return). Both are Fortify starter leftovers, unrelated to this work. Do not fix them and do not suppress them. A task is clean when those 2 are the *only* errors; any third error is yours.
 
 ## File Structure
 
