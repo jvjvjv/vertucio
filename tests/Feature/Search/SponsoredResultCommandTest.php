@@ -115,3 +115,34 @@ it('says so when there are no promos at all', function () {
         ->assertSuccessful()
         ->expectsOutputToContain('No sponsored results yet.');
 });
+
+it('closes an active promo immediately', function () {
+    $promo = SponsoredResult::factory()->create();
+
+    $this->artisan('sponsored:end', ['id' => $promo->id])->assertSuccessful();
+
+    expect($promo->fresh()->status())->toBe(SponsorshipStatus::Expired)
+        ->and(SponsoredResult::active()->count())->toBe(0);
+});
+
+it('accepts an explicit end moment', function () {
+    $promo = SponsoredResult::factory()->create();
+
+    $this->artisan('sponsored:end', ['id' => $promo->id, '--at' => '2026-12-25 00:00'])
+        ->assertSuccessful();
+
+    expect($promo->fresh()->ends_at?->toDateTimeString())->toBe('2026-12-25 00:00:00');
+});
+
+it('fails on an id that does not exist', function () {
+    $this->artisan('sponsored:end', ['id' => '999'])->assertFailed();
+});
+
+it('rejects an end moment it cannot parse', function () {
+    $promo = SponsoredResult::factory()->create();
+
+    $this->artisan('sponsored:end', ['id' => $promo->id, '--at' => 'eventually'])
+        ->assertFailed();
+
+    expect($promo->fresh()->ends_at)->toBeNull();
+});
