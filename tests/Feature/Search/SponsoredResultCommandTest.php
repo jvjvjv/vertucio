@@ -90,3 +90,24 @@ it('requires a url', function () {
 
     expect(SponsoredResult::count())->toBe(0);
 });
+
+it('lists every promo with its derived status', function () {
+    SponsoredResult::factory()->create(['title' => 'Live promo']);
+    SponsoredResult::factory()->expired()->create(['title' => 'Old promo']);
+    SponsoredResult::factory()->scheduled()->create(['title' => 'Future promo']);
+
+    $this->artisan('sponsored:list')->expectsOutputToContain('Live promo');
+    $this->artisan('sponsored:list')->expectsOutputToContain('Old promo');
+    $this->artisan('sponsored:list')->expectsOutputToContain('Future promo');
+    $this->artisan('sponsored:list')->expectsOutputToContain('Active');
+    $this->artisan('sponsored:list')->expectsOutputToContain('Expired');
+    $this->artisan('sponsored:list')->expectsOutputToContain('Scheduled');
+    $this->artisan('sponsored:list')->expectsOutputToContain('vertucio.com');
+    $this->artisan('sponsored:list')->assertSuccessful();
+});
+
+it('says so when there are no promos at all', function () {
+    $this->artisan('sponsored:list')
+        ->assertSuccessful()
+        ->expectsOutputToContain('No sponsored results yet.');
+});
