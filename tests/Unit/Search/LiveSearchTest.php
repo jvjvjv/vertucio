@@ -10,8 +10,11 @@ use App\Search\Data\SearchResultSet;
 use App\Search\Enums\SearchVertical;
 use App\Search\Exceptions\SearchProviderException;
 use App\Search\SearchManager;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
+
+uses(RefreshDatabase::class);
 
 function liveProvider(string $name, array $verticals, array $items = [], bool $throws = false): SearchProvider
 {
