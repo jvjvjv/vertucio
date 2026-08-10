@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
-
-Route::livewire('search', 'pages::search')->name('search');
+Route::livewire('/', 'pages::search')->name('search');
+Route::livewire('sponsor', 'pages::sponsor')->name('sponsor');
+Route::view('privacy', 'pages.privacy')->name('privacy');
