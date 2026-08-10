@@ -45,15 +45,17 @@ Spec: `docs/superpowers/specs/2026-08-10-sponsored-results-design.md`
 
 | Path | Change |
 | ---- | ------ |
-| `app/Models/SearchSnapshot.php` | `protected $guarded = []` → `#[Guarded]` |
-| `app/Models/SearchResult.php` | `#[Guarded]`; link methods move to the trait, keeping two overrides |
+| `app/Models/SearchSnapshot.php` | `protected $guarded = []` → `#[Guarded([])]` |
+| `app/Models/SearchResult.php` | `#[Guarded([])]`; link methods move to the trait, keeping two overrides |
 | `resources/views/pages/⚡search.blade.php` | Load live promos; render the block between Images and Results |
 
 ---
 
 ### Task 1: Retrofit `#[Guarded]` onto the search models
 
-Pure expression change. `GuardsAttributes` resolves a no-argument `#[Guarded]` to `[]`, identical to the current property, so the existing tests are the entire gate. `User` already uses `#[Fillable]` / `#[Hidden]`; this brings the search models in line.
+Pure expression change. `GuardsAttributes` resolves `#[Guarded([])]` to `[]`, identical to the current property, so the existing tests are the entire gate. `User` already uses `#[Fillable]` / `#[Hidden]`; this brings the search models in line.
+
+**Pass the explicit empty array. Do not write a bare `#[Guarded]`.** In Laravel 13.24.0 the attribute's constructor is `__construct(array|string ...$columns)` and its body reads `$columns[0]` unconditionally, so the no-argument form emits an "Undefined array key 0" warning that Laravel's error handler escalates to an `ErrorException`. Both forms yield `[]`; only the explicit one is warning-free.
 
 **Files:**
 - Modify: `app/Models/SearchSnapshot.php`
@@ -104,7 +106,7 @@ Then move the explanation into the existing class docblock and attach the attrib
  * @property array<string, mixed>|null $meta
  * @property-read Collection<int, SearchResult> $results
  */
-#[Guarded]
+#[Guarded([])]
 class SearchSnapshot extends Model
 ```
 
@@ -131,7 +133,7 @@ Delete the same `protected $guarded = [];` block, add the same import, and rewri
  * @property array<string, mixed>|null $meta
  * @property-read SearchSnapshot $snapshot
  */
-#[Guarded]
+#[Guarded([])]
 class SearchResult extends Model
 ```
 
@@ -535,7 +537,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property CarbonImmutable|null $created_at
  * @property CarbonImmutable|null $updated_at
  */
-#[Guarded]
+#[Guarded([])]
 class SponsoredResult extends Model
 {
     /** @use HasFactory<SponsoredResultFactory> */

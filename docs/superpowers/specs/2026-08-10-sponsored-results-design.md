@@ -92,7 +92,7 @@ be rendered on the SERP, and that keeps the two enums in the application togethe
 ## The model
 
 ```php
-#[Guarded]
+#[Guarded([])]
 class SponsoredResult extends Model
 {
     /** @use HasFactory<SponsoredResultFactory> */
@@ -222,15 +222,21 @@ ever genuinely needed.
 `User` already carries `#[Fillable]` and `#[Hidden]`. `SearchResult` and `SearchSnapshot` were written with
 `protected $guarded = []` and drifted from that house style.
 
-Apply `#[Guarded]` to `SearchResult`, `SearchSnapshot`, and the new `SponsoredResult`. Verified against the
-installed framework: `GuardsAttributes` resolves a no-argument `#[Guarded]` to `[]`, identical to the
-current property, so this is a pure expression change.
+Apply `#[Guarded([])]` to `SearchResult`, `SearchSnapshot`, and the new `SponsoredResult`. Verified against
+the installed framework: `GuardsAttributes` resolves it to `[]`, identical to the current property, so this
+is a pure expression change.
+
+The empty array must be passed explicitly. Laravel 13.24.0 declares
+`Guarded::__construct(array|string ...$columns)` and its body reads `$columns[0]` unconditionally, so a
+bare `#[Guarded]` emits an "Undefined array key 0" warning, which Laravel's error handler escalates to an
+`ErrorException`. Both forms compute `[]`; only the explicit one is warning-free. This was found by a
+failing test run, not by reading the source — the attribute list alone does not reveal it.
 
 ```php
 /**
  * Written only by StoreSearchSnapshot, never from request input.
  */
-#[Guarded]
+#[Guarded([])]
 class SearchResult extends Model
 ```
 
