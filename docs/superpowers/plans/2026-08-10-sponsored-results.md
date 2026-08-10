@@ -1116,12 +1116,19 @@ Append to `tests/Feature/Search/SponsoredResultCommandTest.php`:
 
 ```php
 it('closes an active promo immediately', function () {
+    $at = CarbonImmutable::parse('2026-08-10 12:00:00');
+
+    Carbon::setTestNow($at);
+
     $promo = SponsoredResult::factory()->create();
 
     $this->artisan('sponsored:end', ['id' => $promo->id])->assertSuccessful();
 
-    expect($promo->fresh()->status())->toBe(SponsorshipStatus::Expired)
+    expect($promo->fresh()->ends_at?->toDateTimeString())->toBe('2026-08-10 12:00:00')
+        ->and($promo->fresh()->status())->toBe(SponsorshipStatus::Expired)
         ->and(SponsoredResult::active()->count())->toBe(0);
+
+    Carbon::setTestNow();
 });
 
 it('accepts an explicit end moment', function () {
@@ -1147,7 +1154,9 @@ it('rejects an end moment it cannot parse', function () {
 });
 ```
 
-The first test leans on the exclusive end boundary: `ends_at` set to the moment the command ran is already in the past by assertion time, and would be Expired even at exactly that instant.
+**The first test must freeze the clock, and the reason is worth reading before you "simplify" it.** Without `Carbon::setTestNow()`, the command stamps `ends_at` at one instant and `status()` evaluates at a slightly later one, so the assertion only ever observes `ends_at < now` — the already-past case. It never observes `ends_at == now`, which is the half-open window's defining property. A regression flipping `status()` from `lessThanOrEqualTo` to `lessThan` would pass the unfrozen version happily. Freezing time makes the command's `now()` and the assertion's `now()` the same instant, so equality is genuinely the case under test.
+
+Verify the test has teeth rather than assuming: flip `status()` to `lessThan`, confirm this test fails, revert.
 
 - [ ] **Step 2: Run the tests to verify they fail**
 
