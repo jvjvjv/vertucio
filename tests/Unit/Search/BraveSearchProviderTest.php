@@ -171,6 +171,52 @@ it('skips results that carry no url', function () {
         ->and($set->items[0]->title)->toBe('Has a url');
 });
 
+it('filters out results matching an excluded term, since brave images does not honor it server-side', function () {
+    Http::fake([
+        'api.search.brave.com/res/v1/images/*' => Http::response([
+            'results' => [
+                ['title' => 'Vertucio Surname History', 'url' => 'https://example.com/surname'],
+                ['title' => 'Vertuccio Farms Christmas Fest', 'url' => 'https://example.com/farms'],
+                ['title' => 'Jason Vertucio', 'url' => 'https://vertuccio-lookalike.example.com/jason'],
+            ],
+        ]),
+    ]);
+
+    $set = (new BraveSearchProvider)->search(new SearchQuery('Vertucio -Vertuccio', SearchVertical::Images));
+
+    expect($set->count())->toBe(1)
+        ->and($set->items[0]->title)->toBe('Vertucio Surname History');
+});
+
+it('matches an excluded term case-insensitively against title, description, and url', function () {
+    Http::fake([
+        'api.search.brave.com/res/v1/web/*' => Http::response([
+            'web' => ['results' => [
+                ['title' => 'A clean result', 'url' => 'https://example.com/a', 'description' => 'Nothing excluded here'],
+                ['title' => 'Vertuccio Farms in the title', 'url' => 'https://example.com/b'],
+                ['title' => 'Fine title', 'url' => 'https://example.com/c', 'description' => 'mentions VERTUCCIO in caps'],
+                ['title' => 'Fine title', 'url' => 'https://vertuccio.example.com/d'],
+            ]],
+        ]),
+    ]);
+
+    $set = (new BraveSearchProvider)->search(new SearchQuery('Vertucio -Vertuccio', SearchVertical::Web));
+
+    expect($set->count())->toBe(1)
+        ->and($set->items[0]->title)->toBe('A clean result');
+});
+
+it('applies no exclusion filtering when the query has no excluded terms', function () {
+    Http::fake([
+        'api.search.brave.com/res/v1/web/*' => Http::response(braveFixture('web')),
+    ]);
+
+    $withoutExclusion = (new BraveSearchProvider)->search(new SearchQuery('vertucio', SearchVertical::Web));
+    $set = (new BraveSearchProvider)->search(new SearchQuery('vertucio', SearchVertical::Web));
+
+    expect($set->count())->toBe($withoutExclusion->count());
+});
+
 it('throws when the request fails', function () {
     Http::fake([
         'api.search.brave.com/*' => Http::response('rate limited', 429),

@@ -29,6 +29,8 @@ function seedSnapshot(string $provider, SearchVertical $vertical, int $count, ar
 }
 
 it('renders the page for guests', function () {
+    config(['search.query' => 'vertucio']);
+
     $this->get(route('search'))
         ->assertOk()
         ->assertSee('Vertucio')

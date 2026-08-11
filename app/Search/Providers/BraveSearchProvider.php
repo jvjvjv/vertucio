@@ -80,9 +80,61 @@ final class BraveSearchProvider implements SearchProvider
             vertical: $query->vertical,
             query: $query->query,
             fetchedAt: Carbon::now(),
-            items: $this->mapItems($results, $query->vertical),
+            items: $this->excludeTerms($this->mapItems($results, $query->vertical), $query->query),
             meta: ['altered_query' => data_get($response->json(), 'query.altered')],
         );
+    }
+
+    /**
+     * Brave's Web and News endpoints honor a "-term" exclusion in the query
+     * themselves, but Images does not — it returns unfiltered results
+     * regardless. Enforcing exclusions here, after the fact, makes the
+     * guarantee hold for every vertical no matter what Brave's own query
+     * parsing does with it.
+     *
+     * @param  array<int, SearchResultItem>  $items
+     * @return array<int, SearchResultItem>
+     */
+    private function excludeTerms(array $items, string $query): array
+    {
+        $excluded = $this->excludedTerms($query);
+
+        if ($excluded === []) {
+            return array_values($items);
+        }
+
+        return array_values(array_filter(
+            $items,
+            fn (SearchResultItem $item): bool => ! $this->matchesExcludedTerm($item, $excluded)
+        ));
+    }
+
+    /**
+     * @param  array<int, string>  $excluded
+     */
+    private function matchesExcludedTerm(SearchResultItem $item, array $excluded): bool
+    {
+        $haystack = mb_strtolower(implode(' ', array_filter([
+            $item->title, $item->description, $item->url, $item->source,
+        ])));
+
+        foreach ($excluded as $term) {
+            if (str_contains($haystack, $term)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    private function excludedTerms(string $query): array
+    {
+        preg_match_all('/-(\S+)/', $query, $matches);
+
+        return array_map(mb_strtolower(...), $matches[1]);
     }
 
     /**
