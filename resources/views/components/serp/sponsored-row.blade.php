@@ -5,12 +5,20 @@
 @endphp
 
 <article class="flex flex-col gap-1">
-    <p class="truncate text-xs text-(--serp-url) md:text-[13px]">
-        {{ $result->displayHost() }}
-    </p>
+    <div class="flex items-center justify-between gap-2">
+        <p class="truncate text-xs text-(--serp-url) md:text-[13px]">
+            {{ $result->displayHost() }}
+        </p>
+
+        <flux:tooltip toggleable content="{{ __('Sponsored') }}" class="shrink-0 md:hidden">
+            <button type="button" class="flex items-center" aria-label="{{ __('Sponsored') }}">
+                <flux:icon.information-circle variant="mini" class="size-4 text-(--serp-meta)" />
+            </button>
+        </flux:tooltip>
+    </div>
 
     <div class="flex flex-wrap items-baseline gap-2">
-        <span class="shrink-0 text-[11px] font-semibold uppercase tracking-wide text-(--serp-meta)">
+        <span class="hidden shrink-0 text-[11px] font-semibold uppercase tracking-wide text-(--serp-meta) md:inline">
             {{ __('Sponsored') }}
         </span>
 

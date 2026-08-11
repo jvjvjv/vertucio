@@ -135,23 +135,27 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
         </div>
 
         <x-serp.section :heading="__('News')" :collected="$this->newsCollected()" :is-empty="$this->news->isEmpty()">
+            <x-slot:nav>
+                <x-serp.section-nav :paginator="$this->news" page-name="news" />
+            </x-slot:nav>
+
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($this->news as $result)
                     <x-serp.news-card :result="$result" :wire:key="'news-'.($result->id ?? md5($result->url))" />
                 @endforeach
             </div>
-
-            <div class="pt-4">{{ $this->news->links('vendor.pagination.serp', ['pageName' => 'news']) }}</div>
         </x-serp.section>
 
         <x-serp.section :heading="__('Images')" :collected="$this->imagesCollected()" :is-empty="$this->images->isEmpty()">
+            <x-slot:nav>
+                <x-serp.section-nav :paginator="$this->images" page-name="images" />
+            </x-slot:nav>
+
             <div class="grid grid-cols-3 gap-4 xl:grid-cols-6">
                 @foreach ($this->images as $result)
                     <x-serp.image-card :result="$result" :wire:key="'image-'.($result->id ?? md5($result->url))" />
                 @endforeach
             </div>
-
-            <div class="pt-4">{{ $this->images->links('vendor.pagination.serp', ['pageName' => 'images']) }}</div>
         </x-serp.section>
 
         @if ($this->sponsored->isNotEmpty())
@@ -159,8 +163,6 @@ new #[Layout('layouts.serp')] #[Title('Search Results')] class extends Component
                 @foreach ($this->sponsored as $result)
                     <x-serp.sponsored-row :result="$result" :wire:key="'sponsored-'.$result->id" />
                 @endforeach
-
-                <div>{{ $this->sponsored->links('vendor.pagination.serp', ['pageName' => 'sponsored']) }}</div>
             </div>
         @endif
 

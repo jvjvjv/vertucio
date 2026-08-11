@@ -16,7 +16,7 @@ return [
 
     'query' => env('SEARCH_QUERY', 'vertucio'),
 
-    'results_per_vertical' => 20,
+    'results_per_vertical' => 40,
 
     'locale' => [
         'language' => 'en',

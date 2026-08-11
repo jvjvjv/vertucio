@@ -64,6 +64,30 @@ it('shows the first page of each section at the configured page size', function 
     $response->assertSee('wire:click="nextPage(\'results\')"', escape: false);
 });
 
+it('gives News and Images compact chevron nav instead of numbered pagination', function () {
+    seedSnapshot('brave', SearchVertical::Web, 20);
+    seedSnapshot('brave', SearchVertical::News, 20);
+    seedSnapshot('brave', SearchVertical::Images, 20);
+
+    $response = $this->get(route('search'))->assertOk();
+
+    // Results keeps the full numbered pagination bar.
+    $response->assertSee('wire:click="nextPage(\'results\')"', escape: false);
+    $response->assertSee('wire:click="setPage(2, \'results\')"', escape: false);
+
+    // News and Images swipe/click through via chevrons only — no page-number pills.
+    $response->assertSee('wire:click="nextPage(\'news\')"', escape: false);
+    $response->assertSee('wire:click="previousPage(\'news\')"', escape: false);
+    $response->assertDontSee('wire:click="setPage(2, \'news\')"', escape: false);
+
+    $response->assertSee('wire:click="nextPage(\'images\')"', escape: false);
+    $response->assertSee('wire:click="previousPage(\'images\')"', escape: false);
+    $response->assertDontSee('wire:click="setPage(2, \'images\')"', escape: false);
+
+    // Sponsored is never paginated at all.
+    $response->assertDontSee('wire:click="nextPage(\'sponsored\')"', escape: false);
+});
+
 it('tells the visitor when a vertical has never been collected', function () {
     $this->get(route('search'))
         ->assertOk()
