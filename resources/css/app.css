@@ -26,6 +26,16 @@
     --color-accent: var(--color-neutral-800);
     --color-accent-content: var(--color-neutral-800);
     --color-accent-foreground: var(--color-white);
+
+    /* SERP palette. Approximations of the Figma design, defined once so the
+       result cards never hardcode a literal. Dark values flip in @layer theme. */
+    --serp-text: #111111;
+    --serp-meta: #70757a;
+    --serp-line: #ebebeb;
+    --serp-link: #1a0dab;
+    --serp-url: #006621;
+    --serp-surface: #ffffff;
+    --serp-raised: #f8f9fa;
 }
 
 @layer theme {
@@ -33,6 +43,14 @@
         --color-accent: var(--color-white);
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800);
+
+        --serp-text: #e8eaed;
+        --serp-meta: #9aa0a6;
+        --serp-line: #303134;
+        --serp-link: #8ab4f8;
+        --serp-url: #6dd58c;
+        --serp-surface: #0a0a0a;
+        --serp-raised: #171717;
     }
 }
 

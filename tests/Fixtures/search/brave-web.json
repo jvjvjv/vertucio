@@ -1,0 +1,1247 @@
+{
+    "type": "search",
+    "query": {
+        "original": "vertucio",
+        "show_strict_warning": false,
+        "is_navigational": false,
+        "is_news_breaking": false,
+        "spellcheck_off": false,
+        "country": "us",
+        "bad_results": false,
+        "should_fallback": false,
+        "postal_code": "",
+        "city": "",
+        "header_country": "",
+        "more_results_available": true,
+        "state": ""
+    },
+    "mixed": {
+        "type": "mixed",
+        "main": [
+            {
+                "type": "web",
+                "index": 0,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 1,
+                "all": false
+            },
+            {
+                "type": "videos",
+                "all": true
+            },
+            {
+                "type": "web",
+                "index": 2,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 3,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 4,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 5,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 6,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 7,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 8,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 9,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 10,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 11,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 12,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 13,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 14,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 15,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 16,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 17,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 18,
+                "all": false
+            },
+            {
+                "type": "web",
+                "index": 19,
+                "all": false
+            }
+        ],
+        "top": [],
+        "side": []
+    },
+    "videos": {
+        "type": "videos",
+        "results": [
+            {
+                "type": "video_result",
+                "url": "https://www.facebook.com/VisitMesa/videos/vertuccio-farms-is-offering-u-pick-sunflowers-all-may-long-this-fun-event-gives-/984660383949836/",
+                "title": "Get into the holiday spirit at Vertuccio Farms Christmas Fest",
+                "description": "",
+                "video": {},
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "facebook.com",
+                    "hostname": "www.facebook.com",
+                    "favicon": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw",
+                    "path": "\u203a VisitMesa  \u203a videos  \u203a vertuccio-farms-is-offering-u-pick-sunflowers-all-may-long-this-fun-event-gives-  \u203a 984660383949836"
+                }
+            },
+            {
+                "type": "video_result",
+                "url": "https://www.fox10phoenix.com/video/1727234",
+                "title": "Vertuccio Farm celebrates 27 years of harvest fun | FOX 10 Phoenix",
+                "description": "Vertuccio Farms in Mesa is celebrating 27 years, with family friendly activities for the fall season, including the petting zoo. FOX 10's Kenzie Beach reports.",
+                "age": "October 21, 2025",
+                "page_age": "2025-10-21T00:30:51",
+                "fetched_content_timestamp": 1761318569,
+                "video": {
+                    "duration": "01:46",
+                    "publisher": "Fox10phoenix"
+                },
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "fox10phoenix.com",
+                    "hostname": "www.fox10phoenix.com",
+                    "favicon": "https://imgs.search.brave.com/5PnsO-7HrL6hUsOq08LSBmKjwafxmlu4gop9UhCnhnw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNmVkZjJiZTc0/YTVkYTY2MDIwZWNj/NWM3MTRiMTBkNzY4/MmVhMDQ3ZTFjNGQz/NjE2YmM3ODFhZTNi/M2I2YzlmNS93d3cu/Zm94MTBwaG9lbml4/LmNvbS8",
+                    "path": "\u203a video  \u203a 1727234"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/ZOWj0Vjer37ce038M2-59p8UU41fr1ucrnCDYtUh9VE/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZm94dHYuY29t/L2MxMDc4MzMtbWNk/bi5tcC5sdXJhLmxp/dmUvZXhwaXJldGlt/ZT0yMDgyNzg3MjAw/LzgwMzQxMjk5MjAw/NTYyZmM2ZGEzOWEy/N2FhNzg1ZmYzNTc4/YWU3YzYzMzcwMjcy/Yjk4OTBjYjEwZWMy/MmE5NGQvaXVwbC84/NUIvNDAyLzEyODAv/NzIwLzg1QjQwMkI2/ODU0MjlBODZGRjE3/QkNDQ0I0NEY0Q0Qz/LmpwZz92ZT0xJmFt/cDt0bD0x",
+                    "original": "https://images.foxtv.com/c107833-mcdn.mp.lura.live/expiretime=2082787200/80341299200562fc6da39a27aa785ff3578ae7c63370272b9890cb10ec22a94d/iupl/85B/402/1280/720/85B402B685429A86FF17BCCCB44F4CD3.jpg?ve=1&amp;tl=1"
+                }
+            },
+            {
+                "type": "video_result",
+                "url": "https://www.facebook.com/Vertucciofarms/videos/theres-so-much-to-enjoy-at-the-vertuccio-farms-easter-egg-sperience-your-ticket-/4330370407292202/",
+                "title": "Are you ready for Cuddle Cow at the Vertuccio Farms Easter ...",
+                "description": "",
+                "video": {},
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "facebook.com",
+                    "hostname": "www.facebook.com",
+                    "favicon": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw",
+                    "path": "\u203a Vertucciofarms  \u203a videos  \u203a theres-so-much-to-enjoy-at-the-vertuccio-farms-easter-egg-sperience-your-ticket-  \u203a 4330370407292202"
+                }
+            },
+            {
+                "type": "video_result",
+                "url": "https://www.youtube.com/watch?v=n_yTrJW0vz0",
+                "title": "Vertuccio Farms 2025 - YouTube",
+                "description": "Teen Night at Vertuccio Farms is always a delight! #gms #gmsaz #gmsaz2025 #wecare #TeenNight #teens #hangout #VertuccioFarms #pettingzoo #arizona #mesa #mesa...",
+                "age": "November 25, 2025",
+                "page_age": "2025-11-25T23:30:30",
+                "fetched_content_timestamp": 1765304940,
+                "video": {
+                    "duration": "00:45",
+                    "creator": "Guthrie Mainstream Services",
+                    "publisher": "YouTube"
+                },
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "youtube.com",
+                    "hostname": "www.youtube.com",
+                    "favicon": "https://imgs.search.brave.com/Wg4wjE5SHAargkzePU3eSLmWgVz84BEZk1SjSglJK_U/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOTkyZTZiMWU3/YzU3Nzc5YjExYzUy/N2VhZTIxOWNlYjM5/ZGVjN2MyZDY4Nzdh/ZDYzMTYxNmI5N2Rk/Y2Q3N2FkNy93d3cu/eW91dHViZS5jb20v",
+                    "path": "\u203a watch"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/MbpxWKPV0LLq2bkZvGVh0R3MCWFZmlKc1PLE0leQRsY/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9u/X3lUckpXMHZ6MC9t/YXhyZXNkZWZhdWx0/LmpwZw",
+                    "original": "https://i.ytimg.com/vi/n_yTrJW0vz0/maxresdefault.jpg"
+                }
+            },
+            {
+                "type": "video_result",
+                "url": "https://www.instagram.com/reel/DR9pX9Ak80K/",
+                "title": "Cuddle with Baby Cows at Arizona's Vertuccio Farms",
+                "description": "",
+                "video": {},
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "instagram.com",
+                    "hostname": "www.instagram.com",
+                    "favicon": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8",
+                    "path": "\u203a reel  \u203a DR9pX9Ak80K"
+                }
+            },
+            {
+                "type": "video_result",
+                "url": "https://www.instagram.com/reel/DR5tgZ3kUSI/",
+                "title": "Experience the Magic of Christmas Fest at Vertuccio Farms",
+                "description": "",
+                "video": {},
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "instagram.com",
+                    "hostname": "www.instagram.com",
+                    "favicon": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8",
+                    "path": "\u203a reel  \u203a DR5tgZ3kUSI"
+                }
+            }
+        ],
+        "mutated_by_goggles": false
+    },
+    "web": {
+        "type": "search",
+        "results": [
+            {
+                "title": "Vertucio Surname Meaning & Vertucio Family History at Ancestry.com\u00ae",
+                "url": "https://www.ancestry.com/last-name-meaning/vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Discover the meaning of the Vertucio surname on Ancestry\u00ae. Find your family&#x27;s origin in the United States, average life expectancy, most common occupation, and more.",
+                "profile": {
+                    "name": "Ancestry",
+                    "url": "https://www.ancestry.com/last-name-meaning/vertucio",
+                    "long_name": "ancestry.com",
+                    "img": "https://imgs.search.brave.com/_euce0rqMgAniIDkNObOlx44yIbuFRZ7l_0zOjI-TFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjI5MDIyZjFj/ZTAxOWY2NzhhOWY2/ZDk0MTI5MzJjNDFh/NmU5Y2NkMzc1NmUy/YzZhOWJhYjc2Yjc3/MTIyNTA4OC93d3cu/YW5jZXN0cnkuY29t/Lw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "ancestry.com",
+                    "hostname": "www.ancestry.com",
+                    "favicon": "https://imgs.search.brave.com/_euce0rqMgAniIDkNObOlx44yIbuFRZ7l_0zOjI-TFY/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjI5MDIyZjFj/ZTAxOWY2NzhhOWY2/ZDk0MTI5MzJjNDFh/NmU5Y2NkMzc1NmUy/YzZhOWJhYjc2Yjc3/MTIyNTA4OC93d3cu/YW5jZXN0cnkuY29t/Lw",
+                    "path": "\u203a last-name-meaning  \u203a vertucio"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/cN8UNEEpESaU7AAB8wlHzEDt0zSWXONO4qNgdGbaFB0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9jbXNh/c3NldC5hbmNlc3Ry/eWNkbi5jb20vY29u/dGVudC9kYW0vYW5j/ZXN0cnkvYW5jZXN0/cnktbG9nby5wbmc",
+                    "original": "https://cmsasset.ancestrycdn.com/content/dam/ancestry/ancestry-logo.png",
+                    "logo": true
+                },
+                "organization": {
+                    "type": "organization",
+                    "name": "Ancestry",
+                    "contact_points": []
+                }
+            },
+            {
+                "title": "Vertucio Surname Origin, Meaning & Last Name History",
+                "url": "https://forebears.io/surnames/vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Vertucio is most frequently held in The Philippines, where it is borne by 1,681 people, or 1 in 60,225. In The Philippines it is primarily found in: Calabarzon, where 38 percent are found, Mimaropa, where 15 percent are found and National Capital Region, where 10 percent are found.",
+                "profile": {
+                    "name": "Forebears",
+                    "url": "https://forebears.io/surnames/vertucio",
+                    "long_name": "forebears.io",
+                    "img": "https://imgs.search.brave.com/DI13g1jdpmln8LhlIn4pABR0uy3crI68geGrdRCLmk8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2NlM2JlMmEy/NGFmYmQxMjIyZTll/MjdjMGZhOTZmOTJl/MWNiNzIzYjI5M2Y5/MWE2ZDNjZGE0ODU2/NzZiZDQ1Zi9mb3Jl/YmVhcnMuaW8v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "forebears.io",
+                    "hostname": "forebears.io",
+                    "favicon": "https://imgs.search.brave.com/DI13g1jdpmln8LhlIn4pABR0uy3crI68geGrdRCLmk8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2NlM2JlMmEy/NGFmYmQxMjIyZTll/MjdjMGZhOTZmOTJl/MWNiNzIzYjI5M2Y5/MWE2ZDNjZGE0ODU2/NzZiZDQ1Zi9mb3Jl/YmVhcnMuaW8v",
+                    "path": "\u203a surnames  \u203a vertucio"
+                },
+                "extra_snippets": [
+                    "It is the 234,792nd most numerous surname on a worldwide basis, held by around 1 in 4,249,298 people. It is predominantly found in Asia, where 97 percent of Vertucio are found; 97 percent are found in Southeast Asia and 96 percent are found in Fil-Southeast Asia.",
+                    "Vertucio is most frequently held in The Philippines, where it is borne by 1,681 people, or 1 in 60,225. In The Philippines it is primarily found in: Calabarzon, where 38 percent are found, Mimaropa, where 15 percent are found and National Capital Region, where 10 percent are found.",
+                    "Vertucio (18) may also be a first name.",
+                    "Vertucio is found most in The Philippines."
+                ]
+            },
+            {
+                "title": "Vertucio | Forgotten Realms Wiki | Fandom",
+                "url": "https://forgottenrealms.fandom.com/wiki/Vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Captain Vertucio was <strong>a member of the Order of the Sapphire Crescent, the Church of Waukeen&#x27;s personal mercenary army, in the mid-to-late 14th century DR.[1] Vertucio was a strict commander, fully loyal to the Order and the Church of Waukeen</strong>.",
+                "page_age": "2026-03-18T20:04:41",
+                "profile": {
+                    "name": "Forgotten Realms Wiki",
+                    "url": "https://forgottenrealms.fandom.com/wiki/Vertucio",
+                    "long_name": "forgottenrealms.fandom.com",
+                    "img": "https://imgs.search.brave.com/T6fvpyP_HKIM-ETq8S_udlLAiR5YLFa_fk5LQ4i3L1k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA3MjAyNjI3/OTdjMmY0NzZhNDYz/YjdhMDU4Y2U4NTZh/MTE2Yjc4ZTI0YWY1/ZDdjZTExZWMzNmQ0/ZWFkYzU2MS9mb3Jn/b3R0ZW5yZWFsbXMu/ZmFuZG9tLmNvbS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "forgottenrealms.fandom.com",
+                    "hostname": "forgottenrealms.fandom.com",
+                    "favicon": "https://imgs.search.brave.com/T6fvpyP_HKIM-ETq8S_udlLAiR5YLFa_fk5LQ4i3L1k/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjA3MjAyNjI3/OTdjMmY0NzZhNDYz/YjdhMDU4Y2U4NTZh/MTE2Yjc4ZTI0YWY1/ZDdjZTExZWMzNmQ0/ZWFkYzU2MS9mb3Jn/b3R0ZW5yZWFsbXMu/ZmFuZG9tLmNvbS8",
+                    "path": "\u203a wiki  \u203a Vertucio"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/Omy_OOPdOnlSUbaO8Grk0TVSTBPIJAI4jmJedt1SFrU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L2Zv/cmdvdHRlbnJlYWxt/cy9pbWFnZXMvMy8z/OS9TaXRlLWNvbW11/bml0eS1pbWFnZS9y/ZXZpc2lvbi9sYXRl/c3Q_Y2I9MjAyNDAy/MjgwMjEyMjQ",
+                    "original": "https://static.wikia.nocookie.net/forgottenrealms/images/3/39/Site-community-image/revision/latest?cb=20240228021224",
+                    "logo": false
+                },
+                "age": "March 18, 2026",
+                "extra_snippets": [
+                    "Captain Vertucio was a member of the Order of the Sapphire Crescent, the Church of Waukeen's personal mercenary army, in the mid-to-late 14th century DR.[1] Vertucio was a strict commander, fully loyal to the Order and the Church of Waukeen. Even though he was quite fond of Vambran Matrell, he did not allow disobedience.[1] By the Year of Rogue Dragons, 1373 DR, Captain Vertucio was the commanding officer of Vambran Matrell of the noble merchant House Matrell of Arrabar.",
+                    "By the Year of Rogue Dragons, 1373 DR, Captain Vertucio was the commanding officer of Vambran Matrell of the noble merchant House Matrell of Arrabar. Vambran's troops, his two friends, Sergeants Adyan Mercatio and Horial Rohden, as well as their trade vessel the Lady's Favor, were under Captain Vertucio's command.",
+                    "On Tarsakh 13 of 1373 DR, Captain Vertucio was ordered to deploy the entire army of the Sapphire Crescent under orders from the Temple of Waukeen's Grand Trabbar Lavant. Captain Vertucio turned down Vambran Matrell's requests for personal time despite several requests and the grand celebration of his sister's sixteenth birthday.",
+                    "To the lieutenant's surprise, he was offered an excuse to delay the deployment under a false pretense. Grolo Firefist covered for Vambran as he attended his sister's birthday celebration, where the cabal's plot rapidly unfolded. As Vambran was gone for a suspiciously long time, Captain Vertucio dispatched a squad of Crescents to rein him in."
+                ]
+            },
+            {
+                "title": "Vertucio - Wiktionary, the free dictionary",
+                "url": "https://en.wiktionary.org/wiki/Vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Vert\u00faci\u00f3 (Baybayin spelling \u170a\u1712\u1707\u1714\u1706\u1713\u1710\u1714\u170c\u1713) <strong>a surname</strong> \u00b7 Retrieved from &quot;https://en.wiktionary.org/w/index.php?title=Vertucio&amp;oldid=79225479&quot; Categories: Tagalog 3-syllable words \u00b7 Tagalog terms with IPA pronunciation \u00b7 Rhymes:Tagalog/usjo \u00b7",
+                "profile": {
+                    "name": "Wiktionary",
+                    "url": "https://en.wiktionary.org/wiki/Vertucio",
+                    "long_name": "en.wiktionary.org",
+                    "img": "https://imgs.search.brave.com/XQ3KOvkWf0hLVIWhISvRw6M1nLnbdUi-ngZIvmgupxk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGRhMWY0NGNi/NmRhZWY4ODQ1NWEw/ODdmYTRmZDM1OWEy/Mjk4NWZiOGQ2ZDIy/MjE4YzkyZWRiYjI2/OWU5YjI3Zi9lbi53/aWt0aW9uYXJ5Lm9y/Zy8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "en.wiktionary.org",
+                    "hostname": "en.wiktionary.org",
+                    "favicon": "https://imgs.search.brave.com/XQ3KOvkWf0hLVIWhISvRw6M1nLnbdUi-ngZIvmgupxk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGRhMWY0NGNi/NmRhZWY4ODQ1NWEw/ODdmYTRmZDM1OWEy/Mjk4NWZiOGQ2ZDIy/MjE4YzkyZWRiYjI2/OWU5YjI3Zi9lbi53/aWt0aW9uYXJ5Lm9y/Zy8",
+                    "path": "\u203a wiki  \u203a Vertucio"
+                }
+            },
+            {
+                "title": "Jason Vertucio | Composer, Music Artist, Actor",
+                "url": "https://www.imdb.com/name/nm5264006/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Jason Vertucio. Actor: The Journey Down: Over the Edge. Jason Vertucio was born on 18 April 1978 in the USA. He is a <strong>composer and music artist</strong>, known for The Journey Down: Over the Edge (2012).",
+                "profile": {
+                    "name": "IMDb",
+                    "url": "https://www.imdb.com/name/nm5264006/",
+                    "long_name": "Internet Movie Database",
+                    "img": "https://imgs.search.brave.com/No36XuxNtq37lFRbGJS8Y6vyNeayCsgXMGcjqEuMp9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmU3MjU1MmUz/MDhkYjY0OGFlYzY3/ZDVlMmQ4NWZjZDhh/NzZhOGZlZjNjNGE5/M2M0OWI1Y2M2ZjQy/MWE5ZDc3OC93d3cu/aW1kYi5jb20v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "article",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "imdb.com",
+                    "hostname": "www.imdb.com",
+                    "favicon": "https://imgs.search.brave.com/No36XuxNtq37lFRbGJS8Y6vyNeayCsgXMGcjqEuMp9c/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZmU3MjU1MmUz/MDhkYjY0OGFlYzY3/ZDVlMmQ4NWZjZDhh/NzZhOGZlZjNjNGE5/M2M0OWI1Y2M2ZjQy/MWE5ZDc3OC93d3cu/aW1kYi5jb20v",
+                    "path": "\u203a name  \u203a nm5264006"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/_TxU7jdnwKp0gu4ZgiQ4Rs44Tk8bz29Ul1s4mSpJKfM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1HWXdNVEF3/WXpJdE5XRmhaUzAw/WTJVM0xUbGlPRGN0/TjJObE9UQmpOVEky/TURNNVhrRXlYa0Zx/Y0djQC5fVjFfLmpw/Zw",
+                    "original": "https://m.media-amazon.com/images/M/MV5BMGYwMTAwYzItNWFhZS00Y2U3LTliODctN2NlOTBjNTI2MDM5XkEyXkFqcGc@._V1_.jpg",
+                    "logo": false
+                },
+                "article": {
+                    "author": [
+                        {
+                            "type": "person",
+                            "name": "IMDb",
+                            "url": "https://www.imdb.com/"
+                        }
+                    ],
+                    "publisher": {
+                        "type": "organization",
+                        "name": "IMDb",
+                        "thumbnail": {
+                            "src": "https://imgs.search.brave.com/eTaruTSR2yTe1lns3N5f-TpGQvmjomhPAGn5D15QA_k/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0cv/MDEvaW1kYi9pbWFn/ZXMvc29jaWFsL2lt/ZGJfbG9nby5wbmc",
+                            "original": "https://m.media-amazon.com/images/G/01/imdb/images/social/imdb_logo.png"
+                        }
+                    }
+                },
+                "extra_snippets": [
+                    "Known for: The Journey Down: Over the Edge"
+                ]
+            },
+            {
+                "title": "What Does The Name Vertucio Mean?",
+                "url": "https://www.names.org/n/vertucio/about",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Weird things about the name Vertucio: The name spelled backwards is Oicutrev. A random rearrangement of the letters in the name (anagram) will give Ovrucite.",
+                "profile": {
+                    "name": "Names.org",
+                    "url": "https://www.names.org/n/vertucio/about",
+                    "long_name": "names.org",
+                    "img": "https://imgs.search.brave.com/hv0wRl83okY_3B_zJmnd5kaGno7JoEW-4ouFSFGCweI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNlYmFhOTU5/OTU4ZDM3NDY1YmUz/ZWZlMDJjYzA3YWE0/ZmE5MzMyNDZlZjZj/Yjk3ZGE5YzQ1NjQ3/ODA0ZDk2MS93d3cu/bmFtZXMub3JnLw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "names.org",
+                    "hostname": "www.names.org",
+                    "favicon": "https://imgs.search.brave.com/hv0wRl83okY_3B_zJmnd5kaGno7JoEW-4ouFSFGCweI/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDNlYmFhOTU5/OTU4ZDM3NDY1YmUz/ZWZlMDJjYzA3YWE0/ZmE5MzMyNDZlZjZj/Yjk3ZGE5YzQ1NjQ3/ODA0ZDk2MS93d3cu/bmFtZXMub3JnLw",
+                    "path": "\u203a n  \u203a vertucio  \u203a about"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/PMgFAUkyNw8WT_a753CRUcjN-WcZb2AzatWIL6aaJi8/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/bmFtZXMub3JnL25h/bWUtcG9zdGVyL1Zl/cnR1Y2lvLXRhODRm/NzhlOTIyZDM0YmI0/MTI5YmI2ZGU4YTY4/MDBhMzU1ZTJjNWUw/MjkyZGE1MGNlY2Iw/ODgzNWI0ZTU5YWRl/ay1ocS5wbmc",
+                    "original": "https://www.names.org/name-poster/Vertucio-ta84f78e922d34bb4129bb6de8a6800a355e2c5e0292da50cecb08835b4e59adek-hq.png",
+                    "logo": false
+                },
+                "extra_snippets": [
+                    "We noticed you have a microphone. If you know how to pronounce Vertucio, just click the button to record. We'll save it, review it, and post it to help others.",
+                    "How unique is the name Vertucio? Out of 6,504,161 records in the U.S. Social Security Administration public data, the first name Vertucio was not present.",
+                    "Weird things about the name Vertucio: The name spelled backwards is Oicutrev. A random rearrangement of the letters in the name (anagram) will give Ovrucite.",
+                    "What does the name Vertucio mean?"
+                ]
+            },
+            {
+                "title": "Jason Vertucio: Web Applications Engineer",
+                "url": "https://jasonvertucio.com/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Jason Vertucio does mobile application development.",
+                "profile": {
+                    "name": "Jasonvertucio",
+                    "url": "https://jasonvertucio.com/",
+                    "long_name": "jasonvertucio.com",
+                    "img": "https://imgs.search.brave.com/AtIy8TvGhRr9HQ39KYDuZ5-14AZBXypJKn0DLPCMjqQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDlhM2JkOGNk/NGZlOWVmZTZlYTZm/NjFlOGM5OTFjMDNh/MDE0Njk2MTI2Y2Iy/YjFkMTU3NjRiY2Zi/YjM0N2YyOS9qYXNv/bnZlcnR1Y2lvLmNv/bS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "jasonvertucio.com",
+                    "hostname": "jasonvertucio.com",
+                    "favicon": "https://imgs.search.brave.com/AtIy8TvGhRr9HQ39KYDuZ5-14AZBXypJKn0DLPCMjqQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDlhM2JkOGNk/NGZlOWVmZTZlYTZm/NjFlOGM5OTFjMDNh/MDE0Njk2MTI2Y2Iy/YjFkMTU3NjRiY2Zi/YjM0N2YyOS9qYXNv/bnZlcnR1Y2lvLmNv/bS8",
+                    "path": ""
+                }
+            },
+            {
+                "title": "Vertuccio Farms | Mesa AZ | Facebook",
+                "url": "https://www.facebook.com/Vertucciofarms/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Vertuccio Farms, Mesa. 37,785 likes \u00b7 13 talking about this \u00b7 27,440 were here. Farm, friendly, fun! Seasonal events. U-Pick orchard in the spring. Easter Eggsperience, Sunflower Days, Fall Festival,...",
+                "profile": {
+                    "name": "Facebook",
+                    "url": "https://www.facebook.com/Vertucciofarms/",
+                    "long_name": "facebook.com",
+                    "img": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "facebook.com",
+                    "hostname": "www.facebook.com",
+                    "favicon": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw",
+                    "path": "\u203a Vertucciofarms"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/7aYPRunjhv6MNPVN6QZn40cEF9imiNB47CZl7y2wnbw/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zY29u/dGVudC1zamM2LTEu/eHguZmJjZG4ubmV0/L3YvdDM5LjMwODA4/LTEvMzI3MzU5NjM1/XzE4MTc1NDAyNjg2/MTY0ODRfNjI2MzU4/MTk5NTQzODk5ODMz/X24uanBnP3N0cD1k/c3QtanBnX3R0NiZh/bXA7Y3N0cD1teDYw/MHg2MDAmYW1wO2N0/cD1zNjAweDYwMCZh/bXA7X25jX2NhdD0x/MDImYW1wO2NjYj0x/LTcmYW1wO19uY19z/aWQ9M2FiMzQ1JmFt/cDtfbmNfb2hjPW16/OHlJWUE3MkxBUTdr/TnZ3SGZZREJBJmFt/cDtfbmNfb2M9QWRw/Y2NpRmtMUUdMZy1a/bENYSVM0Z2pkMzdL/Z1huUGFWYW9sVU9O/RWJKRjFtemplWENn/dU16enNha3ZWcHRa/Zk8tUSZhbXA7X25j/X3p0PTI0JmFtcDtf/bmNfaHQ9c2NvbnRl/bnQtc2pjNi0xLnh4/JmFtcDtfbmNfZ2lk/PWdRYVpLbjQ1Q1Vx/WXN6TlF4Yklsd1Em/YW1wO19uY19zcz03/OTI4OSZhbXA7b2g9/MDBfQVFIY2g0Z1Jz/MDQ1bjIzYmpxb3lr/UVQwV2txdUYxajVx/bWJRa1NLZkdJMFIt/QSZhbXA7b2U9NkE3/NkMxRDY",
+                    "original": "https://scontent-sjc6-1.xx.fbcdn.net/v/t39.30808-1/327359635_1817540268616484_626358199543899833_n.jpg?stp=dst-jpg_tt6&amp;cstp=mx600x600&amp;ctp=s600x600&amp;_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=mz8yIYA72LAQ7kNvwHfYDBA&amp;_nc_oc=AdpcciFkLQGLg-ZlCXIS4gjd37KgXnPaVaolUONEbJF1mzjeXCguMzzsakvVptZfO-Q&amp;_nc_zt=24&amp;_nc_ht=scontent-sjc6-1.xx&amp;_nc_gid=gQaZKn45CUqYszNQxbIlwQ&amp;_nc_ss=79289&amp;oh=00_AQHch4gRs045n23bjqoykQT0WkquF1j5qmbQkSKfGI0R-A&amp;oe=6A76C1D6",
+                    "logo": false
+                }
+            },
+            {
+                "title": "Home - Vertuccio Farms",
+                "url": "https://vertucciofarms.com/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "We have been farming in Mesa, Arizona since 1979. Vertuccio Farms family invites you to share in our memories and visit our farm.",
+                "page_age": "2026-04-23T18:49:33",
+                "profile": {
+                    "name": "Vertuccio Farms",
+                    "url": "https://vertucciofarms.com/",
+                    "long_name": "vertucciofarms.com",
+                    "img": "https://imgs.search.brave.com/etvUiVM85SsDzzZiGAAPUM9pD_r6y2YfDpPQlSf1lp8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk1ZGZlN2Yz/OTgxOTU2MmMxNjUw/NjcxZTBkNzdkYmI1/ODc0MmFmYWViOWQw/NjRhMGVhNWQ4ZDdj/ZWMzNzQzMy92ZXJ0/dWNjaW9mYXJtcy5j/b20v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "vertucciofarms.com",
+                    "hostname": "vertucciofarms.com",
+                    "favicon": "https://imgs.search.brave.com/etvUiVM85SsDzzZiGAAPUM9pD_r6y2YfDpPQlSf1lp8/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZDk1ZGZlN2Yz/OTgxOTU2MmMxNjUw/NjcxZTBkNzdkYmI1/ODc0MmFmYWViOWQw/NjRhMGVhNWQ4ZDdj/ZWMzNzQzMy92ZXJ0/dWNjaW9mYXJtcy5j/b20v",
+                    "path": "  \u203a home"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/NaXCUO4z919Yc8bS6NcHXYuYQltpXPUpsBPg3z5BA60/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly92ZXJ0/dWNjaW9mYXJtcy5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MjMvMDcvVmVydHVj/Y2lvLUZhcm1zLXB1/bXBraW4tcGF0Y2gt/ZmFsbC5qcGVn",
+                    "original": "https://vertucciofarms.com/wp-content/uploads/2023/07/Vertuccio-Farms-pumpkin-patch-fall.jpeg",
+                    "logo": false
+                },
+                "age": "April 23, 2026"
+            },
+            {
+                "title": "John Carlo Vertucio (@vertztagram) \u2022 Instagram photos and videos",
+                "url": "https://www.instagram.com/vertztagram/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "517 Followers, 666 Following, 896 Posts - John Carlo <strong>Vertucio</strong> (@vertztagram) on Instagram: &quot;#DVStar #PGemp SGV Alumna JPIA-DLSL VP for Publications 2015-2016&quot;",
+                "profile": {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/vertztagram/",
+                    "long_name": "instagram.com",
+                    "img": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "instagram.com",
+                    "hostname": "www.instagram.com",
+                    "favicon": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8",
+                    "path": "\u203a vertztagram"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/_13htk-Tkq2hcq0JTI8QyZmur05vWnxmsANvd9Vj8Xc/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zY29u/dGVudC5jZG5pbnN0/YWdyYW0uY29tL3Yv/dDUxLjI4ODUtMTkv/NDYxNjgyMjk4XzM3/NzUwNzc0NTk0NzMx/NjdfNzczMDU4MzYw/MzQwNzEyMjAzNV9u/LmpwZz9zdHA9ZHN0/LWpwZ19zMTAweDEw/MF90dDYmYW1wO19u/Y19jYXQ9MTA2JmFt/cDtjY2I9MS03JmFt/cDtfbmNfc2lkPWJm/N2ViNCZhbXA7X25j/X29oYz1JMWVPVnB5/OGNxd1E3a052d0dj/OXkyZyZhbXA7X25j/X29jPUFka0FyeEVQ/ZjlnSms4eVpRS19R/RVNsMUFEU1Q2NDU0/UURpSkVHUnZ0RWRN/aU1lcGc1dWJBU01F/VzlpbWxvOGxJVzgm/YW1wO19uY196dD0y/NCZhbXA7X25jX2h0/PXNjb250ZW50LmNk/bmluc3RhZ3JhbS5j/b20mYW1wO29oPTAw/X0FmVENadGs1Wmg5/NnVFVG5lSlFZQ2ZV/TzJRS21pWUtKbnZ3/eXJKYW9SQjFsWXcm/YW1wO29lPTY4NzBF/RTk4",
+                    "original": "https://scontent.cdninstagram.com/v/t51.2885-19/461682298_3775077459473167_7730583603407122035_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=106&amp;ccb=1-7&amp;_nc_sid=bf7eb4&amp;_nc_ohc=I1eOVpy8cqwQ7kNvwGc9y2g&amp;_nc_oc=AdkArxEPf9gJk8yZQK_QESl1ADST6454QDiJEGRvtEdMiMepg5ubASMEW9imlo8lIW8&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;oh=00_AfTCZtk5Zh96uETneJQYCfUO2QKmiYKJnvwyrJaoRB1lYw&amp;oe=6870EE98",
+                    "logo": false
+                },
+                "extra_snippets": [
+                    "517 Followers, 666 Following, 896 Posts - See Instagram photos and videos from John Carlo Vertucio (@vertztagram)"
+                ]
+            },
+            {
+                "title": "Mary Cris Rabino Vertucio (@vertucio5588) \u2022 Instagram photos and videos",
+                "url": "https://www.instagram.com/vertucio5588/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "77 Followers, 60 Following, 403 Posts - Mary Cris Rabino <strong>Vertucio</strong> (@vertucio5588) on Instagram: &quot;Vertucio5588&quot;",
+                "profile": {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/vertucio5588/",
+                    "long_name": "instagram.com",
+                    "img": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "instagram.com",
+                    "hostname": "www.instagram.com",
+                    "favicon": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8",
+                    "path": "\u203a vertucio5588"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/TvRbKDntKfTpxhKdH5cefKLXSkZ3p05MeUI70I8rsuU/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zY29u/dGVudC1kZnc1LTIu/Y2RuaW5zdGFncmFt/LmNvbS92L3Q1MS44/Mjc4Ny0xOS81MjA5/ODExNTlfMTgzMTcz/ODE0NzAyMjY2MDlf/OTE5ODY0MjcwNjc5/NzI0MzExMF9uLmpw/Zz9zdHA9ZHN0LWpw/Z19zMTAweDEwMF90/dDYmYW1wO19uY19j/YXQ9MTAwJmFtcDtj/Y2I9MS03JmFtcDtf/bmNfc2lkPWJmN2Vi/NCZhbXA7ZWZnPWV5/SjJaVzVqYjJSbFgz/UmhaeUk2SW5CeWIy/WnBiR1ZmY0dsakxu/ZDNkeTQxTkRBdVF6/TWlmUSUzRCUzRCZh/bXA7X25jX29oYz1H/MnNfS3ZLdHlKc1E3/a052d0cwRzlkNiZh/bXA7X25jX29jPUFk/bDI4c0MxZGl2TXVr/UHFNdWNYbk4wOC1s/SUp6Y2pZa0VXYWlf/VEl2dWpkejk0S3kx/enh3bXVlQUF6UjJr/NTRyQjgmYW1wO19u/Y196dD0yNCZhbXA7/X25jX2h0PXNjb250/ZW50LWRmdzUtMi5j/ZG5pbnN0YWdyYW0u/Y29tJmFtcDtfbmNf/Z2lkPWplNU1UcXEy/RlJMYU56UXNhTl8t/SFEmYW1wO29oPTAw/X0FmU3NMU285TVdz/N1NIY2tOVWV0cjhY/SGpMQnBZamswYk9q/QmFNR0lqMVYyLWcm/YW1wO29lPTY4OTQw/N0ZE",
+                    "original": "https://scontent-dfw5-2.cdninstagram.com/v/t51.82787-19/520981159_18317381470226609_9198642706797243110_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy41NDAuQzMifQ%3D%3D&amp;_nc_ohc=G2s_KvKtyJsQ7kNvwG0G9d6&amp;_nc_oc=Adl28sC1divMukPqMucXnN08-lIJzcjYkEWai_TIvujdz94Ky1zxwmueAAzR2k54rB8&amp;_nc_zt=24&amp;_nc_ht=scontent-dfw5-2.cdninstagram.com&amp;_nc_gid=je5MTqq2FRLaNzQsaN_-HQ&amp;oh=00_AfSsLSo9MWs7SHckNUetr8XHjLBpYjk0bOjBaMGIj1V2-g&amp;oe=689407FD",
+                    "logo": false
+                },
+                "extra_snippets": [
+                    "77 Followers, 60 Following, 403 Posts - See Instagram photos and videos from Mary Cris Rabino Vertucio (@vertucio5588)"
+                ]
+            },
+            {
+                "title": "Clyde June Vertucio (@june.vertucioii)",
+                "url": "https://www.facebook.com/june.vertucioii/",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "We cannot provide a description for this page right now",
+                "profile": {
+                    "name": "Facebook",
+                    "url": "https://www.facebook.com/june.vertucioii/",
+                    "long_name": "facebook.com",
+                    "img": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "facebook.com",
+                    "hostname": "www.facebook.com",
+                    "favicon": "https://imgs.search.brave.com/UPSLokJBKWPdNzHbqH5o3CgD13zMvR3pUTn8bk7hmPM/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvOWM3NjZkMmE4/MTU1MTk4ZDU5YzU3/NjUxY2ExZTdjNWQx/NjJlNTY1Y2VlODM4/MmRmMDgzZDBiMmI3/YzU4NmU4ZS93d3cu/ZmFjZWJvb2suY29t/Lw",
+                    "path": "\u203a june.vertucioii"
+                }
+            },
+            {
+                "title": "Stream Gerard Vertucio music | Listen to songs, albums, playlists for free on SoundCloud",
+                "url": "https://soundcloud.com/gerard-vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Play Gerard Vertucio and discover followers on SoundCloud | Stream tracks, albums, playlists on desktop and mobile.",
+                "profile": {
+                    "name": "SoundCloud",
+                    "url": "https://soundcloud.com/gerard-vertucio",
+                    "long_name": "soundcloud.com",
+                    "img": "https://imgs.search.brave.com/cITFBqfwL8R8KcVrBVnr4mutx1MdwZ3SrxiSlMNye2E/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTA5ZDgyNGJl/NjljY2RjMmFkYWFi/YThkMjA5NjkxNTNh/YzBmMGI0YWIxNGE4/YTVhNjI3N2IwODQ0/ZTEyMDk4Yy9zb3Vu/ZGNsb3VkLmNvbS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "soundcloud.com",
+                    "hostname": "soundcloud.com",
+                    "favicon": "https://imgs.search.brave.com/cITFBqfwL8R8KcVrBVnr4mutx1MdwZ3SrxiSlMNye2E/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMTA5ZDgyNGJl/NjljY2RjMmFkYWFi/YThkMjA5NjkxNTNh/YzBmMGI0YWIxNGE4/YTVhNjI3N2IwODQ0/ZTEyMDk4Yy9zb3Vu/ZGNsb3VkLmNvbS8",
+                    "path": "\u203a gerard-vertucio"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/fP1hetete-YJFcMF_HIcqNITds_VjNrZcGfIDHKtuFM/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2F2/YXRhcnMtMDAwNDkx/MTQ0NDA2LTNyMmo1/Ny10MTA4MHgxMDgw/LmpwZw",
+                    "original": "https://i1.sndcdn.com/avatars-000491144406-3r2j57-t1080x1080.jpg",
+                    "logo": false
+                },
+                "extra_snippets": [
+                    "Play Gerard Vertucio and discover followers on SoundCloud | Stream tracks, albums, playlists on desktop and mobile."
+                ]
+            },
+            {
+                "title": "VERTUCCIO FARMS - Updated May 2026 - 337 Photos & 164 Reviews - 4011 S Power Rd, Mesa, Arizona - Farmers Market - Phone Number - Yelp",
+                "url": "https://www.yelp.com/biz/vertuccio-farms-mesa",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "VERTUCCIO FARMS - Try Our New Menu - 4011 S Power Rd, Mesa, AZ 85212, 337 Photos, (480) 882-1482, Mon - 5:30 pm - 9:30 pm, Tue - 5:30 pm - 9:30 pm, Wed - 5:30 pm - 9:30 pm, Thu - 5:30 pm - 9:30 pm, Fri - 5:30 pm - 10:00 pm, Sat - 5:30 pm - 10:00 pm, Sun - 5:30 pm - 9:30 pm",
+                "page_age": "2024-06-05T22:00:02",
+                "profile": {
+                    "name": "Yelp",
+                    "url": "https://www.yelp.com/biz/vertuccio-farms-mesa",
+                    "long_name": "yelp.com",
+                    "img": "https://imgs.search.brave.com/tzwdpmQWMd1qDHlKPGs0vjjJIX52tSJFecZRxMFUkzQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY4Yjk2ZTJl/NDMwZTcxNmI0OWU1/NWQxNzMyMzkyMjQ5/MmZjNjBmN2VlNzU5/ZWIxOTMzMzExYTZj/YzM2MTkyMS93d3cu/eWVscC5jb20v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "yelp.com",
+                    "hostname": "www.yelp.com",
+                    "favicon": "https://imgs.search.brave.com/tzwdpmQWMd1qDHlKPGs0vjjJIX52tSJFecZRxMFUkzQ/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYjY4Yjk2ZTJl/NDMwZTcxNmI0OWU1/NWQxNzMyMzkyMjQ5/MmZjNjBmN2VlNzU5/ZWIxOTMzMzExYTZj/YzM2MTkyMS93d3cu/eWVscC5jb20v",
+                    "path": "  \u203a food  \u203a farmers market"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/LK_juhrdY_1PFHKiP_f77yRyKKGSZk5yimzEGqD46wQ/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9zMy1t/ZWRpYTAuZmwueWVs/cGNkbi5jb20vYnBo/b3RvL01zTmcyUnpJ/dDZfZkhTQ3Vka1Ez/NFEvby5qcGc",
+                    "original": "https://s3-media0.fl.yelpcdn.com/bphoto/MsNg2RzIt6_fHSCudkQ34Q/o.jpg",
+                    "logo": false
+                },
+                "age": "June 5, 2024",
+                "extra_snippets": [
+                    "Specialties: Welcome to Vertuccio Farms where we bring you family, affordable, farm-fun. Whether it's a field trip to our \"Pizza Farm\" or birthday party, u-pick peaches or any of our seasonal events. You and your family will leave with a smile. Join us for our annual corn maze and pumpkin patch or our popular Christmas Farm Light Celebration.",
+                    "VERTUCCIO FARMS - Try Our New Menu - 4011 S Power Rd, Mesa, AZ 85212, 337 Photos, (480) 882-1482, Mon - 5:30 pm - 9:30 pm, Tue - 5:30 pm - 9:30 pm, Wed - 5:30 pm - 9:30 pm, Thu - 5:30 pm - 9:30 pm, Fri - 5:30 pm - 10:00 pm, Sat - 5:30 pm - 10:00 pm, Sun - 5:30 pm - 9:30 pm"
+                ]
+            },
+            {
+                "title": "200+ \"Vertucio\" profiles",
+                "url": "https://www.linkedin.com/pub/dir/+/Vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "We cannot provide a description for this page right now",
+                "profile": {
+                    "name": "LinkedIn",
+                    "url": "https://www.linkedin.com/pub/dir/+/Vertucio",
+                    "long_name": "linkedin.com",
+                    "img": "https://imgs.search.brave.com/B3dmoKTAgUkkbrvzAxFg_MfHAm5WmWy0N-4kH1AGWOo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE1YzZjOWNj/NmNiODQ4NzI0ODg1/MGY5ZGQ2YzhjZTRm/N2NjOGIzZjc1NTlj/NDM2ZGI5Yjk3ZWI1/YzBmNzJmZS93d3cu/bGlua2VkaW4uY29t/Lw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "linkedin.com",
+                    "hostname": "www.linkedin.com",
+                    "favicon": "https://imgs.search.brave.com/B3dmoKTAgUkkbrvzAxFg_MfHAm5WmWy0N-4kH1AGWOo/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvNGE1YzZjOWNj/NmNiODQ4NzI0ODg1/MGY5ZGQ2YzhjZTRm/N2NjOGIzZjc1NTlj/NDM2ZGI5Yjk3ZWI1/YzBmNzJmZS93d3cu/bGlua2VkaW4uY29t/Lw",
+                    "path": "\u203a pub  \u203a dir  \u203a +  \u203a Vertucio"
+                }
+            },
+            {
+                "title": "Andrea Vertucio (@andreavertucio)",
+                "url": "https://www.instagram.com/andreavertucio/?hl=fr",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Voir les photos et vid\u00e9os Instagram de Andrea <strong>Vertucio</strong> (@andreavertucio)",
+                "profile": {
+                    "name": "Instagram",
+                    "url": "https://www.instagram.com/andreavertucio/?hl=fr",
+                    "long_name": "instagram.com",
+                    "img": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "instagram.com",
+                    "hostname": "www.instagram.com",
+                    "favicon": "https://imgs.search.brave.com/kgdtgqUZQdNYzMKhbVXC5vthlFLPMJ0IOJAdFjEIRuk/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvN2RiYmJiZDA4/NTBkNWQ0ZmQ3NDE5/OGUxOGI4NzE5ZDI0/Zjk0M2ExMDkzZmJm/ODA0MmJiMzkwZjMy/ZDM4YWVkOS93d3cu/aW5zdGFncmFtLmNv/bS8",
+                    "path": "\u203a andreavertucio"
+                }
+            },
+            {
+                "title": "Vertucio Farm | Macaroni KID East Mesa",
+                "url": "https://eastmesa.macaronikid.com/articles/5825d7e6dafd905530a073ae/vertucio-farm",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "October 1st \u2013 November 6th Admission Includes: 7 acre Corn Maze \u201cNew\u201d Giant Jump Pad \u201cNew\u201d Giant Tube Roll \u201cNew&amp;rdquo&amp;hellip;",
+                "profile": {
+                    "name": "Macaronikid",
+                    "url": "https://eastmesa.macaronikid.com/articles/5825d7e6dafd905530a073ae/vertucio-farm",
+                    "long_name": "eastmesa.macaronikid.com",
+                    "img": "https://imgs.search.brave.com/BYzgtkhXLMfit6ulJ55o2RCZb69R-ooYTqZoTv5nX7I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDJhMTg2NjFl/OGRiYjVkMDA0ODFi/NjBiMTljZTM2Nzk3/NGU1ZTY2ZmU1OTEx/ZTJlNWYzMWQ3MjIx/YTM1OGUyNC9lYXN0/bWVzYS5tYWNhcm9u/aWtpZC5jb20v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "generic",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "eastmesa.macaronikid.com",
+                    "hostname": "eastmesa.macaronikid.com",
+                    "favicon": "https://imgs.search.brave.com/BYzgtkhXLMfit6ulJ55o2RCZb69R-ooYTqZoTv5nX7I/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMDJhMTg2NjFl/OGRiYjVkMDA0ODFi/NjBiMTljZTM2Nzk3/NGU1ZTY2ZmU1OTEx/ZTJlNWYzMWQ3MjIx/YTM1OGUyNC9lYXN0/bWVzYS5tYWNhcm9u/aWtpZC5jb20v",
+                    "path": "\u203a articles  \u203a 5825d7e6dafd905530a073ae  \u203a vertucio-farm"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/MaMkrkx1zkoBmbsNGAfieA7RpJQd2Yw4buT98Df-OQI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9hcGku/bWFjYXJvbmlraWQu/Y29tL2Fzc2V0cy91/cGxvYWRzL3dpZHRo/XzEyMDAsaGVpZ2h0/Xzg0MCxjcm9wX3Ry/dWUvdG93bi9lYXN0/bWVzYS9hcnRpY2xl/LTEzMTU1NTMtMTQ3/MjcwMTEwMS4wNQ",
+                    "original": "https://api.macaronikid.com/assets/uploads/width_1200,height_840,crop_true/town/eastmesa/article-1315553-1472701101.05",
+                    "logo": false
+                }
+            },
+            {
+                "title": "Vertuccio Farms (2026) - KNOW Before You Go (with Reviews)",
+                "url": "https://www.tripadvisor.com/Attraction_Review-g31281-d11725811-Reviews-Vertuccio_Farms-Mesa_Arizona.html",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "This is the version of our website addressed to speakers of English in the United States. If you are a resident of another country or region, please select the appropriate version of Tripadvisor for your country or region in the drop-down menu \u00b7 Tripadvisor LLC makes no guarantees for availability ...",
+                "profile": {
+                    "name": "Tripadvisor",
+                    "url": "https://www.tripadvisor.com/Attraction_Review-g31281-d11725811-Reviews-Vertuccio_Farms-Mesa_Arizona.html",
+                    "long_name": "tripadvisor.com",
+                    "img": "https://imgs.search.brave.com/OEuNbeVBPVl2AlxDmpKDNcYk4RuERMK4gTlMyVzbpSw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjQ1MjliOWZi/NmMxZWRhYmY2MmYy/MmNjMmM0ZWM3MTA4/ZTUxM2E1M2JlMzgx/ODM0N2E2NzY5OTJk/YjQwNmNlNi93d3cu/dHJpcGFkdmlzb3Iu/Y29tLw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "location",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "tripadvisor.com",
+                    "hostname": "www.tripadvisor.com",
+                    "favicon": "https://imgs.search.brave.com/OEuNbeVBPVl2AlxDmpKDNcYk4RuERMK4gTlMyVzbpSw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjQ1MjliOWZi/NmMxZWRhYmY2MmYy/MmNjMmM0ZWM3MTA4/ZTUxM2E1M2JlMzgx/ODM0N2E2NzY5OTJk/YjQwNmNlNi93d3cu/dHJpcGFkdmlzb3Iu/Y29tLw",
+                    "path": "  \u203a united states  \u203a arizona (az)  \u203a central arizona  \u203a mesa  \u203a things to do in mesa  \u203a vertuccio farms"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/53lwM7je5SqDfTCnzezEcR--E1ZHIPlYQHv71MLxDAI/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9keW5h/bWljLW1lZGlhLWNk/bi50cmlwYWR2aXNv/ci5jb20vbWVkaWEv/cGhvdG8tby8xYy83/Ni85Yi9iYi8yMDIw/MTIyNi0xOTAwNDgt/bGFyZ2VqcGcuanBn/P3c9MTIwMCZoPS0x/JnM9MQ",
+                    "original": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/76/9b/bb/20201226-190048-largejpg.jpg?w=1200&h=-1&s=1",
+                    "logo": false
+                },
+                "location": {
+                    "title": "Vertuccio Farms",
+                    "url": "http://vertucciofarms.com/",
+                    "is_source_local": false,
+                    "is_source_both": false,
+                    "family_friendly": true,
+                    "type": "location_result",
+                    "provider_url": "https://www.tripadvisor.com/Attraction_Review-g31281-d11725811-Reviews-Vertuccio_Farms-Central_Arizona_Mesa.html",
+                    "coordinates": [
+                        33.3429,
+                        -111.68473
+                    ],
+                    "zoom_level": 7,
+                    "thumbnail": {
+                        "src": "https://imgs.search.brave.com/qQrLhgHy7rKy4gno9GOpmYc-Iz_HNJmuXAGuoT1alss/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9keW5h/bWljLW1lZGlhLWNk/bi50cmlwYWR2aXNv/ci5jb20vbWVkaWEv/cGhvdG8tby8xYy83/Ni85Yi9iYi8yMDIw/MTIyNi0xOTAwNDgt/bGFyZ2VqcGcuanBn/P3c9MTIwMCZoPS0x/JnM9MQ",
+                        "original": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/76/9b/bb/20201226-190048-largejpg.jpg?w=1200&h=-1&s=1"
+                    },
+                    "postal_address": {
+                        "type": "PostalAddress",
+                        "displayAddress": "4011 S Power Rd, Mesa, AZ 85212-3601"
+                    },
+                    "contact": {
+                        "email": "vertucciofarmsaz@gmail.com",
+                        "telephone": "+1 480-882-1482"
+                    },
+                    "rating": {
+                        "ratingValue": 3.9,
+                        "bestRating": 5.0,
+                        "reviewCount": 20,
+                        "is_tripadvisor": true
+                    },
+                    "profiles": [
+                        {
+                            "type": "external",
+                            "name": "tripadvisor.com",
+                            "url": "https://www.tripadvisor.com/Attraction_Review-g31281-d11725811-Reviews-Vertuccio_Farms-Central_Arizona_Mesa.html",
+                            "img": "https://imgs.search.brave.com/OEuNbeVBPVl2AlxDmpKDNcYk4RuERMK4gTlMyVzbpSw/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvZjQ1MjliOWZi/NmMxZWRhYmY2MmYy/MmNjMmM0ZWM3MTA4/ZTUxM2E1M2JlMzgx/ODM0N2E2NzY5OTJk/YjQwNmNlNi93d3cu/dHJpcGFkdmlzb3Iu/Y29tLw"
+                        }
+                    ],
+                    "pictures": {
+                        "results": [
+                            {
+                                "src": "https://imgs.search.brave.com/qQrLhgHy7rKy4gno9GOpmYc-Iz_HNJmuXAGuoT1alss/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9keW5h/bWljLW1lZGlhLWNk/bi50cmlwYWR2aXNv/ci5jb20vbWVkaWEv/cGhvdG8tby8xYy83/Ni85Yi9iYi8yMDIw/MTIyNi0xOTAwNDgt/bGFyZ2VqcGcuanBn/P3c9MTIwMCZoPS0x/JnM9MQ",
+                                "original": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/76/9b/bb/20201226-190048-largejpg.jpg?w=1200&h=-1&s=1"
+                            },
+                            {
+                                "src": "https://imgs.search.brave.com/0CDAWSKeckpfkSw8WBySXz4NFyyGyr4eyfYvIFPZrZI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9keW5h/bWljLW1lZGlhLWNk/bi50cmlwYWR2aXNv/ci5jb20vbWVkaWEv/cGhvdG8tby8xYy83/Ni85Yi9iYi8yMDIw/MTIyNi0xOTAwNDgt/bGFyZ2VqcGcuanBn/P3c9MTIwMCZoPTEy/MDAmcz0x",
+                                "original": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/76/9b/bb/20201226-190048-largejpg.jpg?w=1200&h=1200&s=1"
+                            }
+                        ]
+                    },
+                    "categories": []
+                },
+                "organization": {
+                    "type": "organization",
+                    "name": "Tripadvisor",
+                    "contact_points": []
+                }
+            },
+            {
+                "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR Accountant II at GE Vernova - ZoomInfo",
+                "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Ronalyn Vertucio is an <strong>RTR Accountant II at GE Vernova</strong>, bringing expertise in accounting and financial reporting within the energy sector. Drawing on a background in finance, Ronalyn previously served as a Finance Analyst at Chevron, where they performed monthly, quarterly, and annual closings.",
+                "profile": {
+                    "name": "ZoomInfo",
+                    "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                    "long_name": "zoominfo.com",
+                    "img": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "faq",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "zoominfo.com",
+                    "hostname": "www.zoominfo.com",
+                    "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                    "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                },
+                "faq": {
+                    "items": [
+                        {
+                            "question": "What company does Ronalyn Vertucio work for?",
+                            "answer": "Ronalyn Vertucio works for GE Vernova as RTR Accountant II",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s role in GE Vernova?",
+                            "answer": "Ronalyn Vertucio\u2019s role in GE Vernova is RTR Accountant II",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s email address?",
+                            "answer": "Ronalyn Vertucio\u2019s email address is r***@ge.com",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s business email address?",
+                            "answer": "Ronalyn Vertucio\u2019s business email address is r***@ge.com",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s direct phone number?",
+                            "answer": "Ronalyn Vertucio\u2019s direct phone number is (***) ***-****",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s work phone number?",
+                            "answer": "Ronalyn Vertucio\u2019s headquarters phone number is (617) 674-7555",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s latest job experience?",
+                            "answer": "Ronalyn Vertucio\u2019s latest job experience is General Accounting Analyst at Tata Communications",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Ronalyn Vertucio\u2019s latest education?",
+                            "answer": "Ronalyn Vertucio\u2019s latest education in Bachelor of Science in Accountancy at Polytechnic University of the Philippines",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "Which industry does Ronalyn Vertucio work in?",
+                            "answer": "Ronalyn Vertucio works in the industry of Electricity, Oil &amp; Gas, Energy, Utilities &amp; Waste, Business Services.",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "Who are Ronalyn Vertucio\u2019s peers at other companies?",
+                            "answer": "Ronalyn Vertucio\u2019s peers at other companies are Aprilyn Mendoza.",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "Who are Ronalyn Vertucio\u2019s colleagues?",
+                            "answer": "Some of Ronalyn Vertucio\u2019s colleagues are Wendy Aldrich, Melissa Alves, \u00d6zge Terci, Nilesh Goswami.",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "How can I contact Ronalyn Vertucio?",
+                            "answer": "Ronalyn Vertucio contact details:\nEmail address: r***@ge.com\nPhone number: (***) ***-****",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "Who is Ronalyn Vertucio?",
+                            "answer": "<p>Ronalyn Vertucio is an RTR Accountant II at GE Vernova, bringing expertise in accounting and financial reporting within the energy sector. \n\nDrawing on a background in finance, Ronalyn previously served as a Finance Analyst at Chevron, where they performed monthly, quarterly, and annual closings. Their responsibilities included preparing and postin... <span>g journal entries, performing balance sheet account reconciliations, and conducting monthly OPEX and balance sheet variance review and analysis. Ronalyn also processed ad hoc reports and addressed urgent requests from management, contributing to financial reporting accuracy. \n\nPrior to Chevron, Ronalyn held a role as a General Accounting Analyst at TCS, contributing to accounting functions. \n\nRonalyn is a Certified Public Accountant, certified by the Philippine Professional Regulation Commission.</span><span>Read More</span></p>",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        },
+                        {
+                            "question": "Where is Ronalyn Vertucio based?",
+                            "answer": "Ronalyn Vertucio works for GE Vernova, located at United States",
+                            "title": "Contact Ronalyn Vertucio, Email: r***@ge.com & Phone Number | RTR ...",
+                            "url": "https://www.zoominfo.com/p/Ronalyn-Vertucio/7594087077",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "zoominfo.com",
+                                "hostname": "www.zoominfo.com",
+                                "favicon": "https://imgs.search.brave.com/n8hhG_8kcRbxV3xG6Tc2QtOSpGrW1m_piC2quBnPDC0/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvMzFjOGFlODUz/YjhmNzRlZWRkODlk/YWQ4NTg4OTRmNDlm/MWQyYzUwODQxMWQw/YjExMDA1OWIwY2Zl/Y2MwZmZlNy93d3cu/em9vbWluZm8uY29t/Lw",
+                                "path": "  \u203a ge vernova  \u203a ge vernova employee directory  \u203a ronalyn vertucio"
+                            }
+                        }
+                    ]
+                },
+                "organization": {
+                    "type": "organization",
+                    "name": "ZoomInfo",
+                    "contact_points": []
+                },
+                "extra_snippets": [
+                    "Ronalyn Vertucio is an RTR Accountant II at GE Vernova, bringing expertise in accounting and financial reporting within the energy sector. Drawing on a background in finance, Ronalyn previously served as a Finance Analyst at Chevron, where they performed monthly, quarterly, and annual closings.",
+                    "Ronalyn Vertucio works in the industry of Electricity, Oil & Gas, Energy, Utilities & Waste, Business Services.",
+                    "Ronalyn Vertucio\u2019s peers at other companies are Aprilyn Mendoza.",
+                    "Some of Ronalyn Vertucio\u2019s colleagues are Wendy Aldrich, Melissa Alves, \u00d6zge Terci, Nilesh Goswami."
+                ]
+            },
+            {
+                "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                "is_source_local": false,
+                "is_source_both": false,
+                "description": "Jason Vertucio&#x27;s phone number is <strong>(215) 295-1819</strong>. Jason Vertucio&#x27;s mobile phone area code starts with 215.",
+                "profile": {
+                    "name": "Whitepages",
+                    "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                    "long_name": "whitepages.com",
+                    "img": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v"
+                },
+                "language": "en",
+                "family_friendly": true,
+                "type": "search_result",
+                "subtype": "faq",
+                "is_live": false,
+                "meta_url": {
+                    "scheme": "https",
+                    "netloc": "whitepages.com",
+                    "hostname": "www.whitepages.com",
+                    "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                    "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                },
+                "thumbnail": {
+                    "src": "https://imgs.search.brave.com/cX8Kq3K-v-05zIB3aHaln81naFA3LSAeCDkZ7TdPrig/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly93d3cu/d2hpdGVwYWdlcy5j/b20vc3RhdGljL2lt/YWdlcy9zdmcvd3Bf/dGFnbGluZS5zdmc",
+                    "original": "https://www.whitepages.com/static/images/svg/wp_tagline.svg",
+                    "logo": true
+                },
+                "faq": {
+                    "items": [
+                        {
+                            "question": "What is Jason Vertucio's phone number?",
+                            "answer": "Jason Vertucio's phone number is (215) 295-1819. Jason Vertucio's mobile phone area code starts with 215. We found 6 phone numbers for Jason Vertucio of Bristol.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Jason Vertucio's address?",
+                            "answer": "Martin Vertucio's home address is 6516 N Radcliffe St in Bristol, PA. View all 5 addresses for Martin.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "What is Jason Vertucio's email address?",
+                            "answer": "Martin Vertucio's email address ends in @gmail.com.  We found 1 active email for Martin Vertucio.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "Who are Jason Vertucio's relatives?",
+                            "answer": "Their family members include Raquel Vertucio, Kevin Vertucio, and Irene Vertucio.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "What age is Jason Vertucio?",
+                            "answer": "Martin Vertucio is in their 80s. Learn how old they are and when they were born with Whitepages Premium.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "Does Jason Vertucio go by other names or aliases?",
+                            "answer": "Yes, this person is also known as Vertucio Martin, Jason Vertucio, and Martin C Ertucio. These aliases may include their birth name, married name, maiden name, or nickname.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "Where can I find Martin Vertucio's public records and property records?",
+                            "answer": "Martin Vertucio's public and property records can be found in a Whitepages background check.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        },
+                        {
+                            "question": "Does Martin Vertucio have any criminal records?",
+                            "answer": "A Whitepages background report will check for any criminal and arrest records for Martin Vertucio.",
+                            "title": "Jason Vertucio Address & Phone Number | Whitepages People Search",
+                            "url": "https://www.whitepages.com/name/Jason-Vertucio",
+                            "meta_url": {
+                                "scheme": "https",
+                                "netloc": "whitepages.com",
+                                "hostname": "www.whitepages.com",
+                                "favicon": "https://imgs.search.brave.com/h9P9ivHksASHrB-rYygBvBP-_4WI6nFsjk2cp186Ucg/rs:fit:32:32:1:0/g:ce/aHR0cDovL2Zhdmlj/b25zLnNlYXJjaC5i/cmF2ZS5jb20vaWNv/bnMvYTg5YzZkMGVi/ZTg5N2Y0YmQ5ZDJi/ZTk3YzJkNmM0NWIz/YjA3NWU4OTg3NDBk/ZTRjOWUzYTdlN2Y5/ZmE0OGI0ZS93d3cu/d2hpdGVwYWdlcy5j/b20v",
+                                "path": "  \u203a people search  \u203a v  \u203a \ud83c\udf0e vertucio"
+                            }
+                        }
+                    ]
+                },
+                "organization": {
+                    "type": "organization",
+                    "name": "Whitepages",
+                    "contact_points": []
+                },
+                "extra_snippets": [
+                    "Martin C Vertucio lives in Bristol, PA. They have also lived in Yardley, PA and Tullytown, PA. Martin is related to Raquel Vertucio and Kevin Vertucio as well as 1 additional person. Phone numbers for Martin include: (215) 946-1432.",
+                    "Find phone numbers and contact info for people named Jason Vertucio in 1 U.S. city and 1 state using Whitepages People Search. People named Martin Vertucio are usually in their 80s. The best profile found nearby is Martin Vertucio, located at 6516 N Radcliffe St, Bristol, PA.",
+                    "Find Jason Vertucio in Bristol, PA and view their phone number, full address, relatives, public records, and past addresses including Pennsylvania and Pennsylvania.",
+                    "Jason Vertucio's phone number is (215) 295-1819. Jason Vertucio's mobile phone area code starts with 215."
+                ]
+            }
+        ],
+        "family_friendly": true
+    }
+}
